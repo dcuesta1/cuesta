@@ -33,13 +33,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#download">Download</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#features">Features</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About us</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="http://localhost:4200">Login</a>
                 </li>
             </ul>
         </div>
@@ -47,28 +50,13 @@
 </nav>
 
 <header class="masthead">
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-lg-7 my-auto">
-                <div class="header-content mx-auto">
-                    <h1 class="mb-5">New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1>
-                    <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
-                </div>
-            </div>
-            <div class="col-lg-5 my-auto">
-                <div class="device-container">
-                    <div class="device-mockup iphone6_plus portrait white">
-                        <div class="device">
-                            <div class="screen">
-                                <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                <img src="img/demo-screen-1.jpg" class="img-fluid" alt="">
-                            </div>
-                            <div class="button">
-                                <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="header-content">
+                <h1>The Smart and Simple Way to Run Your Repair Shop</h1>
+                <h5>Say goodbye to complex software and the chaos of printed paper.
+                    Say hello to cleaner way to handle business.</h5>
+                <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
             </div>
         </div>
     </div>
@@ -77,12 +65,28 @@
 <section class="download bg-primary text-center" id="download">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mx-auto">
-                <h2 class="section-heading">Discover what all the buzz is about!</h2>
-                <p>Our app is available on any mobile device! Download now to get started!</p>
-                <div class="badges">
-                    <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
-                    <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
+            <div class="col-lg-4">
+                <div class="feature-item">
+                    <span class="fa-stack fa-lg" style="font-size:40px">
+                      <i class="fa fa-pencil fa-stack-2x" aria-hidden="true"></i>
+                      <i class="fa fa-wrench fa-flip-horizontal fa-stack-2x fa-inverse"></i>
+                    </span>
+                    <h3>Design Driven</h3>
+                    <p class="text-muted">We lead with design and fine-tune our software to provide a clean, modern user-experience.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature-item">
+                    <i class="fa fa-newspaper-o fa-4x" aria-hidden="true"></i>
+                    <h3>Phone & Tablet Ready</h3>
+                    <p class="text-muted">Never worry about switching devices. Cuesta app is accessible and easy to use on any tablet or phone.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature-item">
+                    <i class="fa fa-newspaper-o fa-4x" aria-hidden="true"></i>
+                    <h3>Free Support</h3>
+                    <p class="text-muted">We’re here for you. We provide training and support at no additional cost.</p>
                 </div>
             </div>
         </div>

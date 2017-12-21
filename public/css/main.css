@@ -175,13 +175,13 @@ header.masthead {
 }
 
 header.masthead .header-content {
-  max-width: 500px;
   margin-bottom: 100px;
   text-align: center;
 }
 
 header.masthead .header-content h1 {
   font-size: 30px;
+  text-align: center;
 }
 
 header.masthead .device-container {
@@ -198,13 +198,11 @@ header.masthead .device-container .screen img {
   header.masthead {
     height: 100vh;
     min-height: 775px;
-    padding-top: 0;
     padding-bottom: 0;
   }
 
   header.masthead .header-content {
     margin-bottom: 0;
-    text-align: left;
   }
 
   header.masthead .header-content h1 {

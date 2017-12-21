@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AuthToken;
+use App\Exceptions\BadInputException;
 use App\Exceptions\UnauthorizedAccessException;
 use Illuminate\Http\Request;
 use Auth;
@@ -17,16 +18,17 @@ class AuthController extends Controller
 			throw new UnauthorizedAccessException('invalid_credentials');
 		}
 
+		if(empty($request->device)) {
+		    throw new BadInputException('missing_device');
+        }
+
 		$user = Auth::user();
 		$token = new AuthToken();
 		$token->value = authenticator()->hash();
 		$token->device = $request->device;
-		$user->authTokens()->save($token);
+		//$user->authTokens()->save($token);
 
-		return [
-			'user' => $user,
-			'token' => $token->value
-		];
+		return $user;
 	}
 
 }
