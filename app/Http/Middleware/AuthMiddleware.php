@@ -16,7 +16,7 @@ class AuthMiddleware
 
 		if(Authenticator()->refreshed()) {
 		//	$response = $response instanceof RedirectResponse ? $response : response($response);
-			return $response->header('refreshed', Authenticator()->refreshed());
+			return $response->header('token', Authenticator()->refreshed());
 		}
 
 		return $response;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\LogicException;
+use App\User;
 use Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -15,8 +16,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-	public function getCurrentUser()
-	{
+	public function getCurrentUser(): User
+    {
 		return Auth::user();
 	}
 }

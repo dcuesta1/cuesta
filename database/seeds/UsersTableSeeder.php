@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\User;
 use App\AuthToken;
+use App\Invoice;
+use App\User;
+use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class UsersTableSeeder extends Seeder
 		// Create a static Superuser
 		$superUser = User::create([
 			'name' => 'Daniel Cuesta',
+			'username' => 'dcuesta',
 			'email' => 'cuestadaniel31@gmail.com',
 			'password' => authenticator()->encrypt('password'),
 			'role' => User::SUPERUSER
@@ -30,8 +32,9 @@ class UsersTableSeeder extends Seeder
 
 		//create static Admin User
 		$superUser = User::create([
-			'name' => 'Gary Beatty',
-			'email' => 'gbeatty@gmail.com',
+			'name' => 'John Doe',
+			'username' => 'djoe',
+			'email' => 'jdoe@gmail.com',
 			'password' => authenticator()->encrypt('password'),
 			'role' => User::ADMIN
 		]);

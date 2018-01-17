@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<items>
+    <item id="24809" name="crate helmet">
+        <attribute key="weight" value="8000" />
+        <attribute key="armor" value="10" />
+        <attribute key="absorbPercentPhysical" value="3" />
+        <attribute key="absorbPercentDeath" value="4" />
+        <attribute key="slotType" value="head" />
+    </item>
+    <item id="25185" name="crate armor">
+        <attribute key="weight" value="12000" />
+        <attribute key="armor" value="20" />
+        <attribute key="absorbPercentPhysical" value="6" />
+        <attribute key="absorbPercentDeath" value="6" />
+        <attribute key="skillsword" value="3" />
+        <attribute key="skillaxe" value="3" />
+        <attribute key="skillclub" value="3" />
+        <attribute key="skilldist" value="3" />
+        <attribute key="slotType" value="body" />
+    </item>
+    <item id="25183" name="crate legs">
+        <attribute key="weight" value="10000" />
+        <attribute key="armor" value="7" />
+        <attribute key="absorbPercentPhysical" value="4" />
+        <attribute key="absorbPercentDeath" value="6" />
+        <attribute key="skillsword" value="1" />
+        <attribute key="skillaxe" value="1" />
+        <attribute key="skillclub" value="1" />
+        <attribute key="skilldist" value="1" />
+        <attribute key="slotType" value="legs" />
+    </item>
+</items>

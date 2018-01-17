@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class AuthToken extends Model
 {
-    protected $fillable = ['value', 'user_id', 'device'];
+    protected $fillable = ['device'];
+    protected $casts = [
+        'id' => 'integer',
+        'user_id' => 'integer'
+    ];
 
     public function user()
     {
