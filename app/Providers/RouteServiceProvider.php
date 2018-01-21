@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\{Car, Customer, Invoice, User};
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -23,9 +24,20 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-    	#TODO:: constrains
+        // Constrains
 	    Route::pattern('id', '[0-9]+');
-        parent::boot();
+
+	    parent::boot();
+
+        //Explicit Binds
+        Route::model('user', User::class);
+        Route::model('customer', Customer::class);
+        Route::model('car', Car::class);
+        Route::model('invoice', Invoice::class);
+
+        Route::bind('username', function ($value) {
+            return User::where('username', $value)->first() ?? abort(404);
+        });
     }
 
     /**

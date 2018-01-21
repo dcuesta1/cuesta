@@ -64,8 +64,8 @@ class InvoicesTableSeeder extends Seeder
             $customer->city = $this->faker->city();
             $customer->state = $this->faker->stateAbbr();
             $customer = $invoice->customer()->save($customer);
-            $customer->cars()->save($car);
 
+            $invoice->cars()->save($car);
             $invoice->number = Invoice::generateNumber($customer->id, $invoice->user_id);
 
             if($invoice->id === 1) {

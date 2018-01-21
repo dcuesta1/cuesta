@@ -2,89 +2,77 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\{BadInputException, ModelNotFoundException};
+use App\Exceptions\{
+    BadInputException, ModelNotFoundException
+};
 use App\User;
 use Illuminate\Http\Request;
 use Validator;
 
 class UserController extends Controller
 {
-    public function index()
+    public function all()
     {
     	$users = User::orderBy('name')->get();
     	foreach($users as $user) {
     	    $user->invoices;
         }
-    	return $users;
+
+        return $users;
     }
 
-    public function getUsersByRole($roleId)
+    public function getUsersByRole($role)
     {
-    	$users = User::role($roleId)->get();
-    	//if(!count($users)) throw new ModelNotFoundException();
+    	$users = User::role($role)->get();
     	foreach($users as $user) {
     	    $user->invoices();
+        }
+
+        if($users->isEmpty()) {
+    	    throw new ModelNotFoundException('USERS_NOT_FOUND');
         }
 
     	return $users;
     }
 
-    public function show($id)
+    public function get($user)
     {
-    	$id = $this->getCurrentUser()->isSuperuser() ?  $id : $this->getCurrentUser()->id;
-
-    	$user = User::findOrFail($id);
-    	return $user;
+        return $user;
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
-	    $validator = Validator::make($request->all(), [
+	    $this->validate($request, [
 		    'name' => 'required|max:191',
 		    'username' => 'required|max:30|unique:users',
 		    'email' => 'required|unique:users|email',
 			'role' => 'nullable|integer'
 	    ]);
 
-	    if(!$validator->passes()) {
-			throw new BadInputException('validation_failed');
-	    }
+	    #TODO: Send password reset email
+	    $user = new User($request->all());
+	    $user->password = str_random();
+	    $user->save();
 
-	    #TODO: send password email to user
-	    $user = User::create($request->all());
-		$user->password = bcrypt(str_random(18));
-		$user->save();
-
-	    return $user;
+        return $user;
     }
 
-	public function update(Request $request, int $id)
+	public function update(Request $request, User $user)
 	{
-		$id = $this->getCurrentUser()->isSuperuser() ?  $id : $this->getCurrentUser()->id;
-
-		$validator = Validator::make($request->all(), [
+		$this->validate($request, [
 			'name' => 'nullable|max:191',
-            'email' => 'nullable|unique:users,email,'.$id.'|email',
+            'email' => 'nullable|unique:users,email,'.$user->id.'|email',
 			'role' => 'nullable|integer'
 		]);
 
-		if(!$validator->passes()) {
-			throw new BadInputException('validation_failed');
-		}
-
-		$user = User::findOrFail($id);
-		$user->update($request->all());
-		dd($user);
-		$user->role = User::ADMIN;
-		$user->save();
+		$user = $user->fill($request->all());
+        $user->save();
 
 		return $user;
 	}
 
-	public function destroy($id)
+	public function destroy(User $user)
 	{
-		$user = User::findOrFail($id);
-		$user->delete();
-		return 1;
+		return ['success' => $user->delete()];
 	}
 }

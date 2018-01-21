@@ -16,7 +16,7 @@ class CustomerController extends Controller
     public function create(Request $request)
     {
         #TODO: Do address validation.
-        $user = ($this->getCurrentUser()->isAdmin() ? User::findOrFail($request->user_id) : $this->getCurrentUser());
+        $user = ($this->user()->isAdmin() ? User::findOrFail($request->user_id) : $this->user());
         $this->validate($request, [
             'first_name' => 'required|min:3',
             'last_name' => 'required|min:3',
@@ -33,9 +33,9 @@ class CustomerController extends Controller
 
     public function userCustomers($username)
     {
-        $user = $this->getCurrentUser()->isSuperuser() ? User::where('username', $username)->get() : $this->getCurrentUser();
+        $user = $this->user()->isSuperuser() ? User::where('username', $username)->get() : $this->user();
 
-        if(!$this->getCurrentUser()->isSuperuser() && $username !== $user->username) {
+        if(!$this->user()->isSuperuser() && $username !== $user->username) {
             throw new ModelNotFoundException();
         }
 
@@ -53,7 +53,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($id);
 
-        if(!$this->getCurrentUser()->isSuperuser() && $customer->user_id !== $this->getCurrentUser()->id)  {
+        if(!$this->user()->isSuperuser() && $customer->user_id !== $this->user()->id)  {
             throw new ModelNotFoundException();
         }
 
@@ -69,9 +69,9 @@ class CustomerController extends Controller
 
     public function destroyMultiple(Request $request, $username) {
 
-        $user = $this->getCurrentUser()->isSuperuser() ? User::where('username', $username)->get() : $this->getCurrentUser();
+        $user = $this->user()->isSuperuser() ? User::where('username', $username)->get() : $this->user();
 
-        if(!$this->getCurrentUser()->isSuperuser() && $username !== $user->username) {
+        if(!$this->user()->isSuperuser() && $username !== $user->username) {
             throw new ModelNotFoundException();
         }
 

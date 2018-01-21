@@ -42,7 +42,7 @@ class PaymentController extends Controller
         }
 
         // Check ownership
-        if(!$this->getCurrentUser()->isSuperuser() && $this->getCurrentUser()->id === $invoice->user_id) {
+        if(!$this->user()->isSuperuser() && $this->user()->id === $invoice->user_id) {
             throw new ModelNotFoundException();
         }
 

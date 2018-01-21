@@ -1,9 +1,6 @@
 <?php
 use \App\AutoTelematic\AutoTelematic;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/decode', function() {
     $it = new AutoTelematic();

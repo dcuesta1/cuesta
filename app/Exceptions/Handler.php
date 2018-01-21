@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -37,6 +38,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        if($exception instanceof AccessDeniedHttpException) {
+
+        }
+
         parent::report($exception);
     }
 
@@ -49,12 +54,19 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-	    if ($exception instanceof ApiException) {
-	    	return response()->json($exception->getResponse(), $exception->getStatusCode());
-	    } else if ($exception instanceof ModelNotFoundException) {
-		    return response()->json([404=>'content_not_found'], 404);
-	    }
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->json([404=>'CONTENT_NOT_FOUND'], 404);
+        }
 
         return parent::render($request, $exception);
+    }
+
+    protected function prepareResponse($request, Exception $e)
+    {
+        if ($e instanceof AccessDeniedHttpException) {
+            return response()->json([404 => 'NOT_FOUND'], 404);
+        }
+
+        return parent::prepareResponse($request, $e);
     }
 }

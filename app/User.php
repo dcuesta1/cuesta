@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -17,16 +18,13 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'username'
-    ];
+    protected $fillable = ['name', 'email', 'username'];
 
     /**
      *   The attributes that should be cast to native types.
      *
      * @var array
      */
-
     protected $casts = [
         'id' => 'integer',
         'role' => 'integer'
@@ -37,26 +35,54 @@ class User extends Authenticatable
      *
      * @var array
      *
-     * fendoandres  alavarez cristian
      */
-    protected $hidden = [
-        'password', 'pivot'
-    ];
+    protected $hidden = ['password', 'pivot'];
 
+    // ROLE HELPER FUNCTIONS
+
+    /**
+     * Cheks if the current user is of role: Superuser
+     *
+     * @return bool
+     */
     public function isSuperuser()
     {
     	return ($this->role === self::SUPERUSER);
     }
 
+    /**
+     * Checks if the current user is of role: Admin
+     *
+     * @return bool
+     */
     public function isAdmin()
     {
     	return ($this->role === self::ADMIN);
     }
 
+    // SCOPE FUCNTIONS
+
+    /**
+     * Helper to retrive users by role
+     *
+     * @usedBy UserController:getUsersByRole
+     * @param $query
+     * @param $role
+     * @return mixed
+     */
 	public function scopeRole($query, $role)
 	{
 		return $query->where('role', '=', $role);
 	}
+
+	// ACCESSORS & MUTATORS
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+	// RELATIONSHIPS
 
 	public function authTokens()
 	{
@@ -73,4 +99,3 @@ class User extends Authenticatable
         return $this->hasMany(('App\Customer'));
     }
 }
-

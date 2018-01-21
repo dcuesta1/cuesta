@@ -9,7 +9,7 @@ use Input, Validator;
 
 class InvoiceController extends Controller
 {
-    public function index()
+    public function all()
     {
         $invoices = Invoice::all();
 
@@ -22,44 +22,22 @@ class InvoiceController extends Controller
     }
 
 
-    public function userInvoices($username) {
-        $user = $this->getCurrentUser()->isSuperuser() ? User::where('username', $username)->get() : $this->getCurrentUser();
-
-        if(!$this->getCurrentUser()->isSuperuser() && $username !== $user->username) {
-            throw new ModelNotFoundException();
-        }
+    public function userInvoices(User $username) {
+        $user = $this->user()->isSuperuser() ? $username : $this->user();
 
         $invoices = $user->invoices;
 
         foreach ($invoices as $invoice) {
             $invoice->payments;
-            $invoice->customer;
+            $customer = $invoice->customer()->withTrashed()->get();
+            $invoice->customer = $customer;
         }
 
         return $invoices;
     }
 
-    public function show($id)
+    public function get(Invoice $invoice)
     {
-        if(!$this->getCurrentUser()->isSuperuser()) {
-        $invoices = $this->getCurrentUser()->invoices;
-
-            foreach($invoices as $invoice) {
-                if($invoice->id == $id) {
-                    $invoice->customer;
-                    $invoice->payments;
-
-                    return $invoice;
-                } else {
-                    throw new ModelNotFoundException("invoice_not_found");
-                }
-            }
-        }
-
-        $invoice =  Invoice::findOrFail($id);
-        $invoice->customer;
-        $invoice->payments;
-
         return $invoice;
     }
 
@@ -79,7 +57,7 @@ class InvoiceController extends Controller
         ]);
 
         #TODO: clean up the order the customer and invoice gets save.
-        $userId = $this->getCurrentUser()->isSuperuser() ? $request->user_id : $this->getCurrentUser()->id;
+        $userId = $this->user()->isSuperuser() ? $request->user_id : $this->user()->id;
 
         $invoice = new Invoice();
         $invoice->status = Invoice::ESTIMATE;
@@ -99,7 +77,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::findOrFail($id);
 
-        if(!$this->getCurrentUser()->isSuperuser() && $invoice->user_id !== $this->getCurrentUser()->id)  {
+        if(!$this->user()->isSuperuser() && $invoice->user_id !== $this->user()->id)  {
             throw new ModelNotFoundException();
         }
 
@@ -117,7 +95,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::findOrFail($id);
 
-        if(!$this->getCurrentUser()->isSuperuser() && $invoice->user_id !== $this->getCurrentUser()->id)  {
+        if(!$this->user()->isSuperuser() && $invoice->user_id !== $this->user()->id)  {
             throw new ModelNotFoundException();
         }
 

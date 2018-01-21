@@ -15,8 +15,8 @@ class Car extends Model
         'customer_id' => 'integer'
     ];
 
-    function customer()
+    function invoices()
     {
-        return $this->belongsTo('App\Customer');
+        return $this->belongsToMany('App\Invoice', 'car_customer_invoice');
     }
 }

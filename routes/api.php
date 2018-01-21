@@ -4,56 +4,94 @@
  *  Unprotected Routes
  */
 Route::post('/authenticate', 'AuthController@authenticate');
+
+
 /*
  *  Protected Routes
  */
+
 Route::group(['middleware' => ['auth.api']], function () {
-    //Users
-	Route::put('/users/{id}', 'UserController@update');
-	Route::get('/users/{id}', 'UserController@show');
-	//Invoices
-    Route::get('/invoices/{id}', 'InvoiceController@show');
+    /*
+     * USERS
+     */
+
+    // --Admin
+    Route::middleware(['can:admin,user'])->group(function () {
+        Route::get('/users/{user}', 'UserController@get');
+        Route::put('/users/{user}', 'UserController@update');
+    });
+
+    // --Super
+    Route::middleware(['can:super,App\User'])->group(function () {
+        //Users
+        Route::get('/users', 'UserController@all');
+        Route::get('/users/role/{role}', 'UserController@getUsersByRole');
+        Route::post('/users', 'UserController@store');
+        Route::delete('/users/{user}', 'UserController@destroy');
+    });
+
+    /*
+     *  INVOICES
+     */
+    //--Admin
+    Route::middleware(['can:admin,invoice'])->group(function () {
+        Route::get('/invoices/{invoice}', 'InvoiceController@get');
+        Route::put('/invoices/{invoice}', 'InvoiceController@update');
+        Route::delete('/invoices/{invoice}', 'InvoiceController@destroy');
+    });
+
     Route::get('/user/{username}/invoices', 'InvoiceController@userInvoices');
-    Route::post('/invoices', 'InvoiceController@create');
-    Route::put('/invoices/{id}', 'InvoiceController@update');
-    Route::delete('/invoices/{id}', 'InvoiceController@destroy');
+    Route::post('/invoices', 'InvoiceController@store');
 
-    //Payments
-    Route::get('/invoices/{id}/payments', 'PaymentController@show');
-    Route::post('/invoices/{id}/payments', 'PaymentController@create');
+    //--Super
+    Route::middleware(['can:super,App\Invoice'])->group(function () {
+        Route::get('/invoices', 'InvoiceController@all');
+    });
 
-    //Customers
-    Route::get('/customers/{id}', 'CustomerController@show');
-    Route::get('/user/{username}/customers', 'CustomerController@userCustomers');
-    Route::post('/customers', 'CustomerController@create');
-    Route::put('customers/{id}', 'CustomerController@update');
-    Route::patch('/user/{username}/customers/delete', 'CustomerController@destroyMultiple');
+    /*
+     *  PAYMENTS
+     */
+    //--Admin
+//    Route::middleware(['can:admin,invoice'])->group(function () {
+//        Route::get('/invoices/{invoice}/payments', 'PaymentController@get');
+//        Route::post('/invoices/{invoice}/payments', 'PaymentController@store');
+//    });
+    //--Super
+//    Route::middleware(['can:super,App\Payment'])->group(function (){
+//        Route::get('/invoices/payments', 'PaymentController@all');
+//        Route::put('/invoices/{invoice}/payments', 'PaymentController@update');
+//        Route::destroy('/invoices/{id}/payments', 'PaymentController@destroy');
+//    });
 
-    //Cars
-    Route::post('/cars', 'CarController@create');
-    Route::put('/cars/{id}', 'CarController@update');
-    Route::delete('/cars/{id}','CarController@destroy');
 
-    //AutoTelematics
-    Route::get('/auto/decode/{vin}', 'AutoTelematicController@decode');
+    /*
+     *  CUSTOMERS
+     */
+    //--Admin
+//    Route::middleware(['can:admin,App\Customer'])->group(function (){
+//        Route::get('/customers/{customer}', 'CustomerController@get');
+//        Route::get('/user/{username}/customers', 'CustomerController@userCustomers');
+//        Route::post('/customers', 'CustomerController@store');
+//        Route::put('customers/{customer}', 'CustomerController@update');
+//        Route::patch('/user/{username}/customers/delete', 'CustomerController@destroyMultiple');
+//    });
+    //--Super
+//    Route::get('/customers', 'CustomerController@all')->middleware('can:super,App\Customer');
 
-    Route::group(['middleware' => 'auth.superuser'], function() {
+    /*
+     *  CARS
+     */
+    //-Admin
+//    Route::middleware(['can:admin,App\Customer'])->group(function () {
+//        Route::post('/cars', 'CarController@store');
+//        Route::put('/cars/{car}', 'CarController@update');
+//        Route::delete('/cars/{car}','CarController@destroy');
+//    });
 
-	    //Users
-	    Route::get('/users', 'UserController@index');
-		Route::get('/users/role/{id}', 'UserController@getUsersByRole');
-		Route::post('/users', 'UserController@create');
-		Route::delete('/users/{id}', 'UserController@destroy');
+    /*
+     *  AUTO TELEMATICS
+     */
 
-		//Invoices
-		Route::get('/invoices', 'InvoiceController@index');
+    //Route::get('/auto/decode/{vin}', 'AutoTelematicController@decode')
 
-		//Payments
-        Route::get('/invoices/payments', 'PaymentController@index');
-        Route::put('/invoices/{id}/payments', 'PaymentController@update');
-//       Route::destroy('/invoices/{id}/payments', 'PaymentController@destroy');
-
-        //Customers
-        Route::get('/customers', 'CustomerController@index');
-	});
 });

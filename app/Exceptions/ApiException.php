@@ -33,4 +33,8 @@ class ApiException extends Exception{
 		return $this->response;
 	}
 
+    public function render($request)
+    {
+        return response()->json($this->getResponse(), $this->getStatusCode());
+    }
 }

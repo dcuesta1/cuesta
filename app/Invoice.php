@@ -25,6 +25,8 @@ class Invoice extends Model
         'cost' => 'integer'
     ];
 
+    // RELATIONSHIPS
+
     public function payments()
     {
         return $this->hasMany('App\Payment');
@@ -32,7 +34,12 @@ class Invoice extends Model
 
     public function customer()
     {
-        return $this->belongsToMany('App\Customer');
+        return $this->belongsToMany('App\Customer', 'car_customer_invoice');
+    }
+
+    public function cars()
+    {
+        return $this->belongsToMany('App\Car', 'car_customer_invoice');
     }
 
     public function user()

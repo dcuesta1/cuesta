@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomerInvoiceTable extends Migration
+class CreateCarCustomerInvoiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCustomerInvoiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_invoice', function (Blueprint $table) {
-            $table->bigInteger('id', true);
-            $table->bigInteger('customer_id');
+        Schema::create('car_customer_invoice', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
             $table->bigInteger('invoice_id');
+            $table->bigInteger('customer_id')->nullable();
+            $table->bigInteger('car_id')->nullable();
         });
     }
 
@@ -27,6 +29,6 @@ class CreateCustomerInvoiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_invoice');
+        Schema::dropIfExists('car_customer_invoice');
     }
 }

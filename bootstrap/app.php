@@ -20,6 +20,12 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+/*
+ | -----------------------------------------------
+ |   ADDED AUTHENTICATOR HELPER CLASS
+ |
+*/
+
 $app->singleton('Authenticator', function ($app) {
 	return new \App\Auth\Authentication();
 });

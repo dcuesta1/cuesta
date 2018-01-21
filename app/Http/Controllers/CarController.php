@@ -22,7 +22,7 @@ class CarController extends Controller
     {
         $customer = Customer::find($request->customer_id);
 
-        if(!$this->getCurrentUser()->isSuperuser() && $customer->user_id !== $this->getCurrentUser()->id){
+        if(!$this->user()->isSuperuser() && $customer->user_id !== $this->user()->id){
             throw new ModelNotFoundException('BUSINESS_CUSTOMER_NOT_FOUND');
         }
 
@@ -44,7 +44,7 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         $customer = $car->customer()->get()->first();
 
-        if(!$this->getCurrentUser()->isSuperuser() && $customer->user_id !== $this->getCurrentUser()->id){
+        if(!$this->user()->isSuperuser() && $customer->user_id !== $this->user()->id){
             throw new ModelNotFoundException('BUSINESS_CUSTOMER_NOT_FOUND');
         }
 
@@ -58,7 +58,7 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         $customer = $car->customer()->get()->first();
 
-        if(!$this->getCurrentUser()->isSuperuser() && $customer->user_id !== $this->getCurrentUser()->id){
+        if(!$this->user()->isSuperuser() && $customer->user_id !== $this->user()->id){
             throw new ModelNotFoundException('BUSINESS_CUSTOMER_NOT_FOUND');
         }
 
