@@ -24,6 +24,6 @@ class Item extends Model
 
     public function invoice()
     {
-        return $this->belongsTo('App\Invoice');
+        return $this->belongsTo('Api\Invoice');
     }
 }

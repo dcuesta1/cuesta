@@ -30,27 +30,27 @@ class Invoice extends Model
 
     public function payments()
     {
-        return $this->hasMany('App\Payment');
+        return $this->hasMany('Api\Payment');
     }
 
     public function customer()
     {
-        return $this->belongsToMany('App\Customer');
+        return $this->belongsToMany('Api\Customer');
     }
 
     public function car()
     {
-        return $this->belongsToMany('App\Car');
+        return $this->belongsToMany('Api\Car');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('Api\User');
     }
 
     public function items()
     {
-        return $this->hasMany('App\Item');
+        return $this->hasMany('Api\Item');
     }
 
     /* Helper Functions */

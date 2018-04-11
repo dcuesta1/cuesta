@@ -175,7 +175,7 @@ return [
          */
         Api\Providers\AppServiceProvider::class,
         Api\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        // Api\Providers\BroadcastServiceProvider::class,
         Api\Providers\EventServiceProvider::class,
         Api\Providers\RouteServiceProvider::class,
 

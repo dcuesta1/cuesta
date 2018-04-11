@@ -22,12 +22,12 @@ class Customer extends Model
 
     public function invoices()
     {
-        return $this->belongsToMany('App\Invoice');
+        return $this->belongsToMany('Api\Invoice');
     }
 
     public function cars()
     {
-        return $this->hasMany('App\Car');
+        return $this->hasMany('Api\Car');
     }
 
     /* Getters */

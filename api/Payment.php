@@ -31,7 +31,7 @@ class Payment extends Model
 
     public function invoice()
     {
-        return $this->belongsTo('App\Invoice');
+        return $this->belongsTo('Api\Invoice');
     }
 
     public static function generateRef(int $invoiceId, int $type) : int

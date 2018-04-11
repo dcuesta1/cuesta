@@ -79,16 +79,16 @@ class User extends Authenticatable
 
 	public function authTokens()
 	{
-		return $this->hasMany('App\AuthToken');
+		return $this->hasMany('Api\AuthToken');
 	}
 
 	public function invoices()
     {
-        return $this->hasMany('App\Invoice')->orderByDesc('created_at');
+        return $this->hasMany('Api\Invoice')->orderByDesc('created_at');
     }
 
     public function customers()
     {
-        return $this->hasMany(('App\Customer'));
+        return $this->hasMany(('Api\Customer'));
     }
 }

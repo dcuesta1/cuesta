@@ -17,11 +17,11 @@ class Car extends Model
 
     function invoices()
     {
-        return $this->belongsToMany('App\Invoice', 'car_customer_invoice');
+        return $this->belongsToMany('Api\Invoice', 'car_customer_invoice');
     }
 
     function customer()
     {
-        return $this->belongsTo('App\Customer');
+        return $this->belongsTo('Api\Customer');
     }
 }

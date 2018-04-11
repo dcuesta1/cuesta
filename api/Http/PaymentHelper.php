@@ -8,7 +8,7 @@ use Illuminate\Validation\Rules\In;
 
 /**
  * Class PaymentHelper
- * @package App\Http
+ * @package Api\Http
  */
 class PaymentHelper
 {
