@@ -1,6 +1,6 @@
 <?php
 
-use App\{Customer, Invoice, Car, Payment, Item};
+use Api\{Customer, Invoice, Car, Payment, Item};
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use Database\Faker\{CarFaker, ItemFaker};
@@ -21,7 +21,7 @@ class InvoicesTableSeeder extends Seeder
 
     public function run()
     {
-        factory(App\Invoice::class, 2)->create()->each(function (Invoice $invoice) {
+        factory(Api\Invoice::class, 2)->create()->each(function (Invoice $invoice) {
             $net = $invoice->cost;
             $fees = $net*.03;
             $tip = $this->faker->randomNumber(4);
@@ -40,6 +40,7 @@ class InvoicesTableSeeder extends Seeder
             $fakerCar = new CarFaker();
             $car = new Car((array) $fakerCar);
             $car->year = $this->faker->numberBetween($min = 2000, $max = 2017);
+            $car->customer_id =
 
             $fakerItem = new ItemFaker();
             $item = new Item((array) $fakerItem);
@@ -64,8 +65,9 @@ class InvoicesTableSeeder extends Seeder
             $customer->city = $this->faker->city();
             $customer->state = $this->faker->stateAbbr();
             $customer = $invoice->customer()->save($customer);
+            $car->customer_id = $customer->id;
+            $invoice->car()->save($car);
 
-            $invoice->cars()->save($car);
             $invoice->number = Invoice::generateNumber($customer->id, $invoice->user_id);
 
             if($invoice->id === 1) {

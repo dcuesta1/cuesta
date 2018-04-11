@@ -68,13 +68,14 @@ Route::group(['middleware' => ['auth.api']], function () {
      *  CUSTOMERS
      */
     //--Admin
-//    Route::middleware(['can:admin,App\Customer'])->group(function (){
-//        Route::get('/customers/{customer}', 'CustomerController@get');
-//        Route::get('/user/{username}/customers', 'CustomerController@userCustomers');
-//        Route::post('/customers', 'CustomerController@store');
-//        Route::put('customers/{customer}', 'CustomerController@update');
-//        Route::patch('/user/{username}/customers/delete', 'CustomerController@destroyMultiple');
-//    });
+    Route::middleware(['can:admin,App\Customer'])->group(function (){
+        Route::get('/customers/{customer}', 'CustomerController@get');
+        Route::put('customers/{customer}', 'CustomerController@update');
+        Route::patch('/user/{username}/customers/delete', 'CustomerController@destroyMultiple');
+    });
+    Route::get('/user/{username}/customers', 'CustomerController@userCustomers');
+    Route::post('/customers', 'CustomerController@store');
+
     //--Super
 //    Route::get('/customers', 'CustomerController@all')->middleware('can:super,App\Customer');
 
@@ -82,11 +83,11 @@ Route::group(['middleware' => ['auth.api']], function () {
      *  CARS
      */
     //-Admin
-//    Route::middleware(['can:admin,App\Customer'])->group(function () {
-//        Route::post('/cars', 'CarController@store');
-//        Route::put('/cars/{car}', 'CarController@update');
-//        Route::delete('/cars/{car}','CarController@destroy');
-//    });
+    Route::middleware(['can:admin,car'])->group(function () {
+        Route::put('/cars/{car}', 'CarController@update');
+        Route::delete('/cars/{car}','CarController@destroy');
+    });
+    Route::post('/cars', 'CarController@store');
 
     /*
      *  AUTO TELEMATICS

@@ -1,8 +1,8 @@
 <?php
 
-use App\AuthToken;
-use App\Invoice;
-use App\User;
+use Api\AuthToken;
+use Api\Invoice;
+use Api\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
 		$authToken->device = str_random(12);
 		$superUser->authTokens()->save($authToken);
 
-		factory(App\User::class, 3)->create()->each(function (User $user) {
+		factory(Api\User::class, 3)->create()->each(function (User $user) {
 			$authToken = new AuthToken();
 			$authToken->value = authenticator()->hash();
 			$authToken->device = str_random(12);

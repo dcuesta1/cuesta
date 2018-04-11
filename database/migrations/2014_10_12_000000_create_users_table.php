@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('role')->default(\App\User::ADMIN);
+            $table->integer('role')->default(\Api\User::ADMIN);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -12,3 +12,25 @@ yarn-error.log
 .env
 *.log
 *.lock
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
