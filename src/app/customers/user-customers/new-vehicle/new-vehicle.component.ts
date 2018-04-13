@@ -1,16 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarService } from '../../../_services/car.service';
 import { ModalService } from '../../../_services/modal.service';
 import { Car } from '../../../_models/Car';
 import { AutoTelematicService } from '../../../_services/auto-telematic.service';
 import { MakeModels } from '../../../_etc/makeModels';
-import { Customer } from '../../../_models/Customer';
 
 @Component({
   selector: 'new-vehicle',
-  templateUrl: './new-vehicle.component.html',
-  styleUrls: ['./new-vehicle.component.scss']
+  templateUrl: './new-vehicle.component.html'
 })
 export class NewVehicleComponent implements OnInit {
   @Input() customerId: number;

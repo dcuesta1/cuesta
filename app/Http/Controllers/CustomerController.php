@@ -1,7 +1,7 @@
 <?php
 
-namespace Api\Http\Controllers;
-use Api\{
+namespace App\Http\Controllers;
+use App\{
     Customer, Exceptions\ModelNotFoundException, User
 };
 use Illuminate\Http\Request;

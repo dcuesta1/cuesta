@@ -1,4 +1,4 @@
-import { BaseModel } from "./BaseModel";
+import { BaseModel } from './BaseModel';
 
 export class Car extends BaseModel {
     public id: number;

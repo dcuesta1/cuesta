@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
-import { User } from "../_models/User";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { User } from '../_models/User';
 
 @Injectable()
 export class GLobalEventsManager {
-    public user:User;
+  public user: User;
 
     private _showNavigations: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public showNavEmitter: Observable<boolean> = this._showNavigations.asObservable();

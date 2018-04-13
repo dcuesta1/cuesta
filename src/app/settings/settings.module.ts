@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonalSettingsComponent } from './personal-settings/personal-settings.component';
 import { IndexSettingsComponent } from './index-settings/index-settings.component';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { BusinessSettingsComponent } from './business-settings/business-settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 const SettingsRoutes: Routes = [
   {
-    path: 'settings', 
+    path: 'settings',
     component: IndexSettingsComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'personal' },
@@ -35,7 +35,7 @@ const SettingsRoutes: Routes = [
     ReactiveFormsModule
   ],
   declarations: [
-    PersonalSettingsComponent, 
+    PersonalSettingsComponent,
     IndexSettingsComponent,
     BusinessSettingsComponent
   ]

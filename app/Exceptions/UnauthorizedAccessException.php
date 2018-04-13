@@ -1,8 +1,8 @@
 <?php
 
-namespace Api\Exceptions;
+namespace App\Exceptions;
 
-class UnauthorizedAccessException extends ApiException {
+class UnauthorizedAccessException extends AppException {
 
 	protected   $message = "access_denied",
 				$statusCode = 401;

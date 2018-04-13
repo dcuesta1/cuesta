@@ -1,9 +1,9 @@
 <?php
 
-namespace Api\Policies;
+namespace App\Policies;
 
-use Api\User;
-use Api\Car;
+use App\User;
+use App\Car;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CarPolicy implements PolicyInterface

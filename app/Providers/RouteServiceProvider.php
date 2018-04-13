@@ -1,8 +1,10 @@
 <?php
 
-namespace Api\Providers;
+namespace App\Providers;
 
-use Api\{Car, Customer, Invoice, User};
+use App\{
+    Car, Customer, Invoice, Settings, User
+};
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -15,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Api\Http\Controllers';
+    protected $namespace = 'App\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -34,6 +36,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('customer', Customer::class);
         Route::model('car', Car::class);
         Route::model('invoice', Invoice::class);
+        Route::model('settings', Settings::class);
 
         Route::bind('username', function ($value) {
             return User::where('username', $value)->first() ?? abort(404);
@@ -47,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
+        $this->mapAppRoutes();
 
         $this->mapWebRoutes();
 
@@ -75,7 +78,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes()
+    protected function mapAppRoutes()
     {
         Route::prefix('api')
              ->middleware('api')

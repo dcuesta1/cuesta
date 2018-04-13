@@ -1,9 +1,9 @@
 <?php
 
-namespace Api\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Api\Exceptions\{ModelNotFoundException, BadInputException};
-use Api\{Customer, Invoice, User};
+use App\Exceptions\{ModelNotFoundException, BadInputException};
+use App\{Customer, Invoice, User};
 use Illuminate\Http\Request;
 use Input, Validator;
 

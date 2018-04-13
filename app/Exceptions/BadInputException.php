@@ -1,8 +1,8 @@
 <?php
 
-namespace Api\Exceptions;
+namespace App\Exceptions;
 
-class BadInputException extends ApiException {
+class BadInputException extends AppException {
 	protected   $statusCode = 422,
 				$message = "bad_input";
 }

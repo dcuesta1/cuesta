@@ -1,0 +1,87 @@
+.navbarComp {
+  height: 60px;
+  background: $theme-secondary;
+
+  .fa {
+    color: #fff;
+  }
+
+  .navbar-container {
+    height: 60px;
+
+    .logo {
+      float: left;
+      height: 100%;
+      width: 185px;
+      font-family: $theme-header-font;
+      color: $theme-primary;
+      font-size: 26px;
+      line-height: 60px;
+      padding-left: 50px;
+    }
+  }
+
+  .navButton {
+    display: inline-block;
+    line-height: 60px;
+    height: 100%;
+    border-left: 1px solid #ccc;
+    padding: 0 20px;
+    color: #fff;
+
+    &:last-child {
+      border-right: 1px solid #ccc;
+    }
+
+    i {
+      font-size: 1.3em;
+    }
+  }
+
+  .navRight {
+    text-align: right;
+
+    .dropdown-menu {
+      background: $theme-secondary;
+      border: 0;
+      border-radius: 0 0 5px 5px;
+      -webkit-box-shadow: 3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+      -moz-box-shadow: 3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+      box-shadow: 3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999;
+      margin-top: 0;
+    }
+
+    #impersonatingDropDownButton {
+      color: $theme-primary !important;
+
+      .fa-user-secret {
+        color: $theme-primary !important;
+      }
+    }
+
+    .stopImpersonationButton {
+      background: $theme-primary;
+    }
+  }
+
+  .userButton {
+    border: 0;
+    height: 100%;
+    border-left: 1px solid #ccc;
+    float: right;
+    line-height: 60px;
+    color: #fff;
+
+    button {
+      border: 0;
+      color: #fff;
+      background: inherit;
+      padding: 0 20px;
+
+      i {
+        padding-right: 5px;
+      }
+    }
+  }
+}
+

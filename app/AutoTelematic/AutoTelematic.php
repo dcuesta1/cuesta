@@ -1,12 +1,12 @@
 <?php
 /**
- * Wrapper class for the CarMD Api service.
+ * Wrapper class for the CarMD App service.
  *
  * @author: Cuesta
  */
 
-namespace Api\AutoTelematic;
-use Api\AutoTelematic\models\{Message, DecodeData};
+namespace App\AutoTelematic;
+use App\AutoTelematic\models\{Message, DecodeData};
 use GuzzleHttp\Client;
 
 class AutoTelematic

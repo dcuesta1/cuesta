@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="registerFormContainer is-Responsive">
+      <div id="logo-container"><span class="logo">Cuesta</span></div>
+      <div class="col-sm-12 col-md-10 col-md-offset-1 mx-auto">
+        <form [formGroup]="registerForm" (ngSubmit)="login(registerForm.value)" id="loginForm">
+          <div class="form-group input-group">
+            <!--<span class="input-group-addon"><i class=""></i></span>-->
+            <div class="input-group-prepend fullName">
+              <span class="input-group-text" id="">Full Name</span>
+            </div>
+            <input
+              formControlName="firstName"
+              type="text" class="form-control"
+              id="firstName"
+              placeholder="First">
+            <input
+              formControlName="lastName"
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="last">
+          </div>
+          <div class="form-group input-group">
+            <!--<span class="input-group-addon"><i class=""></i></span>-->
+            <input formControlName="username" type="text" class="form-control" id="username" placeholder="Username">
+          </div>
+          <div class="form-group input-group">
+            <!--<span class="input-group-addon"><i class=""></i></span>-->
+            <input formControlName="email" type="text" class="form-control" id="email" placeholder="email">
+          </div>
+          <div class="form-group input-group">
+            <!--<span class="input-group-addon"><i class=""></i></span>-->
+            <input formControlName="password" type="password" class="form-control" id="password" placeholder="password">
+          </div>
+          <div class="form-group input-group">
+            <!--<span class="input-group-addon"><i class=""></i></span>-->
+            <input formControlName="passwordConfirm" type="password" class="form-control" id="passwordConfirm"
+                   placeholder="Confirm password">
+          </div>
+          <div class="form-group">
+            <button [disabled]="!registerForm.valid" type="submit" class="btn btn-def btn-block mx-auto">Sign up
+            </button>
+          </div>
+          <div class="form-group text-center loginLinks">
+            <a href="{{ homeUrl }}" class="left"><i class="fa fa-arrow-left"></i> Back to Home</a>
+            <a routerLink="/login" class="right">Sign in</a>
+          </div>
+          <div class="form-group loginLinks">
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

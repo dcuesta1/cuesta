@@ -1,5 +1,5 @@
 <?php
-use \Api\AutoTelematic\AutoTelematic;
+use \App\AutoTelematic\AutoTelematic;
 
 Route::get('/', function () {
     return view('welcome');

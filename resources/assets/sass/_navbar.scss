@@ -6,8 +6,8 @@
     @include heading-font;
     .navbar-brand {
         color: $theme-primary;
-        @include heading-font;
-        &:hover,
+      font-family: 'Oleo Script', cursive;
+      &:hover,
         &:focus {
             color: darken($theme-primary, 10%);
         }

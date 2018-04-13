@@ -12,33 +12,38 @@ import { LocalService } from '../../_services/local.service';
 @Component({
   selector: '.userinvoicescomponent',
   templateUrl: './user-invoices.component.html',
-  styleUrls: ['./user-invoices.component.scss']
+  styleUrls: ['../../../assets/sass/user-invoices.component.scss']
 })
 export class UserInvoicesComponent implements OnInit {
   public invoices: Invoice[] = [];
   public currentUser: User;
+  public _impersonating;
 
-  public paid: number = 0;
-  public outstanding: number = 0;
-  public estimates: number = 0;
+  public paid = 0;
+  public outstanding = 0;
+  public estimates = 0;
 
-  public invoicePane: boolean = false;
+  public invoicePane = false;
   public selectedInvoice: Invoice;
 
   constructor(
     private _invoiceService: InvoiceService,
-    private _local: LocalService
-  ) { 
-    this.currentUser = new User(_local.getCurrentUser());
+    public local: LocalService
+  ) {
+    this._impersonating = local.getImpersotedUser();
+    this.currentUser = new User(local.getCurrentUser());
+
+    if (this._impersonating) {
+      this.currentUser = new User(this._impersonating);
+    }
   }
 
   ngOnInit() {
-    let username = this.currentUser.username;
+    const username = this.currentUser.username;
     this._invoiceService.userInvoices(username).subscribe(
       (invoices) => {
-        for(let invoice of invoices) {
+        for (const invoice of invoices) {
           this.invoices.push(new Invoice(invoice));
-         
           switch (invoice.status) {
             case Invoice.CLOSED:
                 this.paid += invoice.cost;
@@ -48,7 +53,7 @@ export class UserInvoicesComponent implements OnInit {
               break;
             case Invoice.ESTIMATE:
               this.estimates += invoice.cost;
-              break;        
+              break;
           }
         }
       }

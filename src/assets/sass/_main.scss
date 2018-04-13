@@ -1,0 +1,103 @@
+html {
+  height: 100%;
+}
+
+.approot {
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  color: #1f2428;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+p {
+  font-size: 14px;
+}
+
+button, select {
+  cursor: pointer;
+}
+
+select.form-control, option {
+  color: $theme-secondary;
+  width: auto !important;
+}
+
+.danger {
+  color: $theme-tertiary !important;
+}
+
+.cf {
+  clear: both;
+}
+
+.uc {
+  text-transform: uppercase
+}
+
+.lw {
+  text-transform: lowercase
+}
+
+.cap {
+  text-transform: capitalize
+}
+
+.offWhite {
+  background: #fafafa;
+}
+
+.gray {
+  background: #ccc;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+/**
+    Global Component Classes
+*/
+
+.form-control.ng-touched.ng-invalid {
+  border-color: $theme-tertiary !important;
+}
+
+button:disabled {
+  cursor: no-drop !important;
+
+}
+
+/* fixed and fluid only on sm and up */
+@media (min-width: 576px) {
+  .fixed {
+    flex: 0 0 200px;
+    min-height: 100vh;
+  }
+  .col .fluid {
+    min-height: 100vh;
+  }
+}
+

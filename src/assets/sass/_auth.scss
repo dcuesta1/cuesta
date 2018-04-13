@@ -1,0 +1,225 @@
+/**
+ Shared
+ */
+.logincomponent,
+.registercomponent {
+  background: url('assets/img/loginComponent-bg.jpg');
+  height: 100vh;
+  -webkit-background-size: cover;
+  background-size: cover;
+  width: 100%;
+}
+
+/**
+ Login Component
+ */
+.logincomponent {
+
+  .loginFormContainer {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #ffffff1f;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    -webkit-box-shadow: 0 0 10px #353846;
+    -moz-box-shadow: 0 0 10px #353846;
+    box-shadow: 0 0 10px #353846;
+    color: #fff;
+
+    #logo-container {
+      margin: auto;
+      margin-bottom: 10px;
+      width: 200px;
+      height: 30px;
+    }
+
+    .logo {
+      font-family: 'Oleo Script', cursive;
+      font-size: 28px;
+      color: #ffc300
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    input.form-control {
+      background: transparent;
+      border: 1px solid #fff;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+      color: #fff;
+      padding: 10px;
+      width: 230px;
+
+      &::placeholder {
+        color: #fff;
+      }
+
+      &:-ms-input-placeholder {
+        color: #fff;
+      }
+
+      &:last-of-type {
+        margin-top: 20px;
+      }
+    }
+
+    &.is-Responsive {
+      width: 50%;
+      height: 50%;
+      min-height: 400px;
+      min-width: 200px;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    button {
+      background: #ffc000;
+      padding: 10px;
+      border: 0;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+      width: 250px;
+      color: #fff;
+      margin-top: 35px;
+    }
+
+    .loginLinks {
+      max-width: 250px;
+      display: block;
+      clear: both;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    #loginForm {
+      margin: 0 auto;
+    }
+  }
+}
+
+/*
+  RegisterComponent
+ */
+
+.registercomponent {
+
+  .registerFormContainer {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    -webkit-box-shadow: 0 0 10px #353846;
+    -moz-box-shadow: 0 0 10px #353846;
+    box-shadow: 0 0 10px #353846;
+    color: #444;
+
+    #logo-container {
+      margin: auto;
+      margin-bottom: 10px;
+      width: 200px;
+      height: 30px;
+    }
+
+    .logo {
+      font-family: 'Oleo Script', cursive;
+      font-size: 28px;
+      color: #ffc300
+    }
+
+    a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+
+    .input-group-text, input#firstName, input#lastName {
+      margin-top: 20px !important;
+    }
+
+    .input-group-text {
+      background: #ddd;
+      color: #aaa
+    }
+
+    #fistName {
+      border-radius: 2px 0 0 2px;
+      border-right: 0 !important;
+    }
+
+    #lastName {
+      border-radius: 0 2px 2px 0;
+    }
+
+    input.form-control {
+      background: transparent;
+      border: 1px solid #ced4da;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+      color: #444;
+      padding: 10px;
+
+      &::placeholder {
+        color: #a2a2a2;
+      }
+
+      &:-ms-input-placeholder {
+        color: #ccc;
+      }
+
+      &:last-of-type {
+        margin-top: 20px;
+      }
+    }
+
+    &.is-Responsive {
+      width: 70%;
+      height: 90%;
+      min-height: 400px;
+      min-width: 200px;
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    button {
+      background: #0056b3;
+      padding: 10px;
+      border: 0;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 2px;
+      width: 250px;
+      color: #fff;
+      margin-top: 35px;
+    }
+
+    .loginLinks {
+      max-width: 250px;
+      display: block;
+      clear: both;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    #loginForm {
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,21 +1,28 @@
-<div class="container-fluid component-container offWhite">
-  <!-- Title & Navigation -->
-  <div class="title-header title-header--nav-right">
-    <div class="row" style="width:100%">
-      <div class="col-lg-8 title-header_title title-header--nav-right_title">Transactions</div>
-      <div  class="col-lg-4 title-header_navigation">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" routerLink="/{{currentUser.username}}/sales/reports/summary">Reports</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLinkActive]="['active']" routerLink="/{{currentUser.username}}/sales/transactions">Transactions</a>
-          </li>
-        </ul>
-      </div>
-    </div>  
+<!-- Title & Navigation -->
+<div class="title-header title-header--nav-right">
+  <div class="row" style="width:100%">
+    <div class="col-lg-8 title-header_title title-header--nav-right_title">
+        <span
+          *ngFor="let breadCrumb of local.getLocationPath(); let i = index"
+          [class.title-header_breadcrumb-item-root]="!i"
+          class="title-header_breadcrumb-item">
+        {{ breadCrumb }}
+      </span>
+    </div>
+    <div class="col-lg-4 title-header_navigation">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="/sales/reports/summary">Reports</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="/sales/transactions">Transactions</a>
+        </li>
+      </ul>
+    </div>
   </div>
-
+</div>
+<!-- Main -->
+<div class="container-fluid component-container offWhite">
   <div class="row" style="width: 100%">
     <div class="col-md-4 center">
       <div>

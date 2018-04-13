@@ -1,6 +1,6 @@
 <?php
 
-namespace Api;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,27 +30,27 @@ class Invoice extends Model
 
     public function payments()
     {
-        return $this->hasMany('Api\Payment');
+        return $this->hasMany('App\Payment');
     }
 
     public function customer()
     {
-        return $this->belongsToMany('Api\Customer');
+        return $this->belongsToMany('App\Customer');
     }
 
     public function car()
     {
-        return $this->belongsToMany('Api\Car');
+        return $this->belongsToMany('App\Car');
     }
 
     public function user()
     {
-        return $this->belongsTo('Api\User');
+        return $this->belongsTo('App\User');
     }
 
     public function items()
     {
-        return $this->hasMany('Api\Item');
+        return $this->hasMany('App\Item');
     }
 
     /* Helper Functions */

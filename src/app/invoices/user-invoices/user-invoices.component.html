@@ -1,19 +1,27 @@
-<div class="container-fluid component-container offWhite">
-  <!-- Title & Navigation -->
-  <div class="title-header title-header--nav-right">
-    <div class="row" style="width:100%">
-      <div class="col-lg-8 title-header_title title-header--nav-right_title">Invoices</div>
-        <div  class="col-lg-4 title-header_navigation">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link" 
-                [routerLinkActive]="['active']" 
-                routerLink="/{{currentUser.username}}/invoices">Invoices</a>
-            </li>
-          </ul>
-      </div>
-    </div>  
+<!-- Title & Navigation -->
+<div class="title-header title-header--nav-right">
+  <div class="row" style="width:100%">
+    <div class="col-lg-8 title-header_title title-header--nav-right_title">
+      <span
+        *ngFor="let breadCrumb of local.getLocationPath(); let i = index"
+        [class.title-header_breadcrumb-item-root]="!i"
+        class="title-header_breadcrumb-item">
+        {{ breadCrumb }}
+      </span>
+    </div>
+    <div class="col-lg-4 title-header_navigation">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLinkActive]="['active']"
+             routerLink="/invoices">Invoices</a>
+        </li>
+      </ul>
+    </div>
   </div>
+</div>
+<!-- Main -->
+<div class="container-fluid component-container offWhite">
   <div class="row" style="width: 100%">
     <div class="col-md-4 center">
       <div>
@@ -50,10 +58,10 @@
       </select>
     </div>
     <div class="filter-bar_actions col-lg-4">
-      <button class="btn btn-primary">Create Invoice</button>
+      <button class="btn btn-theme-secondary">Create Invoice</button>
     </div>
   </div>
-  <table class="table componentTable">
+  <table class="table componentTable clickableRows">
     <thead>
       <tr>
         <th scope="col">Date</th>
@@ -77,26 +85,27 @@
     <div class="sidePopup_content">
       <div *ngIf="selectedInvoice.status == 4" class="create-invoice_actions">
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Duplicate</button>
+          <button class="btn btn-outline-theme-secondary">Duplicate</button>
         </div>
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Share</button>
+          <button class="btn btn-outline-theme-secondary">Share</button>
         </div>
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Print</button>
+          <button class="btn btn-outline-theme-secondary">Print</button>
         </div>
       </div>
 
       <div *ngIf="selectedInvoice.status == 1" class="create-invoice_actions">
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Remind</button>
+          <button class="btn btn-outline-theme-secondary">Remind</button>
         </div>
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Edit</button>
+          <button class="btn btn-outline-theme-secondary">Edit</button>
         </div>
         <div class="create-invoice_actions-item">
           <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-outline-theme-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               More
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -110,25 +119,25 @@
 
       <div *ngIf="selectedInvoice.status == 2" class="create-invoice_actions">
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Edit</button>
+          <button class="btn btn-outline-theme-secondary">Edit</button>
         </div>
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Duplicate</button>
+          <button class="btn btn-outline-theme-secondary">Duplicate</button>
         </div>
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Delete</button>
+          <button class="btn btn-outline-theme-secondary">Delete</button>
         </div>
       </div>
 
       <div *ngIf="selectedInvoice.status == 8" class="create-invoice_actions">
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Duplicate</button>
+          <button class="btn btn-outline-theme-secondary">Duplicate</button>
         </div>
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Share</button>
+          <button class="btn btn-outline-theme-secondary">Share</button>
         </div>
         <div class="create-invoice_actions-item">
-            <button class="btn btn-outline-primary">Print</button>
+          <button class="btn btn-outline-theme-secondary">Print</button>
         </div>
       </div>
 
@@ -193,7 +202,7 @@
       </div>
     </div>
     <div class="sidePopup_bottom-pane">
-        <button class="btn btn-primary sidePopup_bottom-pane_button" (click)="closeInvoicePane()">Done</button>
+      <button class="btn btn-theme-secondary sidePopup_bottom-pane_button" (click)="closeInvoicePane()">Done</button>
     </div>
   </div>
 </div>

@@ -7,47 +7,49 @@ import { Invoice } from '../../_models/Invoice';
 @Component({
   selector: '.salestransactionscomponent',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss']
+  styleUrls: ['../../../assets/sass/transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
-  private currentUser: User;
-  public invoices :Invoice[] = [];
+  public currentUser: User;
+  public invoices: Invoice[] = [];
+  public totalTransactions = 0;
+  public totalCollected = 0.00;
+  public netSales = 0.00;
+  public transactions: Array<any>;
+  public dates: Array<any> = [];
+  private _impersonating;
 
-  public totalTransactions: number = 0;
-  public totalCollected: number = 0.00;
-  public netSales: number = 0.00;
+  constructor(public local: LocalService,
+              private _invoiceService: InvoiceService) {
+    this._impersonating = local.getImpersotedUser();
+    this.currentUser = new User(local.getCurrentUser());
 
-  public transactions :Array<any>;
-  public dates :Array<any>;
-
-  constructor(
-    private _local :LocalService,
-    private _invoiceService :InvoiceService
-  ) { 
-    this.currentUser = new User(_local.getCurrentUser());
+    if (this._impersonating) {
+      this.currentUser = new User(this._impersonating);
+    }
   }
 
   ngOnInit() {
     this._invoiceService.userInvoices(this.currentUser.username).subscribe(
       (invoices) => {
-        for(let invoice of invoices) {
-          this.totalTransactions += invoice.payments.length;   
+        for (const invoice of invoices) {
+          this.totalTransactions += invoice.payments.length;
           this.invoices.push(new Invoice(invoice));
         }
 
-        var date = this.invoices[0].created_at;
-        for(let invoice of this.invoices) {
+        const date = this.invoices[0].created_at;
+        for (const invoice of this.invoices) {
           this.netSales += invoice.net();
-          this.totalCollected += invoice.totalCollected();  
-        
-          for(let payment of invoice.payments) {
-            let dateRow = {
+          this.totalCollected += invoice.totalCollected();
+
+          for (const payment of invoice.payments) {
+            const dateRow = {
               date: invoice.created_at,
               total: payment.net
             };
             this.dates.push(dateRow);
-            
-            let invoiceRow = {
+
+            const invoiceRow = {
               total: payment.net,
               type: payment.type,
               customer: invoice.number,

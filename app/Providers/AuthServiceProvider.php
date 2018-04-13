@@ -1,11 +1,11 @@
 <?php
 
-namespace Api\Providers;
+namespace App\Providers;
 
-use Api\{
-    Car, Customer, Invoice, Policies\CarPolicy, User
+use App\{
+    Car, Customer, Invoice, Policies\CarPolicy, Policies\SettingsPolicy, Settings, User
 };
-use Api\policies\{UserPolicy, InvoicePolicy};
+use App\policies\{UserPolicy, InvoicePolicy};
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -18,7 +18,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Invoice::class => InvoicePolicy::class,
-        Car::class => CarPolicy::class
+        Car::class => CarPolicy::class,
+        Settings::class => SettingsPolicy::class
     ];
 
     /**

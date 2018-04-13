@@ -7,15 +7,22 @@ header.masthead {
     padding-bottom: 100px;
 
     color: white;
-    background: url('../img/bg-pattern.png'), $theme-secondary;
-    background: url('../img/bg-pattern.png'), -webkit-linear-gradient(to left, $theme-secondary, $theme-tertiary);
-    background: url('../img/bg-pattern.png'), linear-gradient(to left, $theme-secondary, $theme-tertiary);
+    background: url('../img/login-bg.jpg');
+    background: -webkit-linear-gradient(to left, rgba($theme-secondary, .7), rgba($theme-tertiary,.7)), url('../img/login-bg.jpg');
+    background:  linear-gradient(to left, rgba($theme-secondary, .7), rgba($theme-tertiary, .7)), url('../img/login-bg.jpg');
+    background-size: cover;
+
     .header-content {
-        margin-bottom: 100px;
         text-align: center;
+        margin: 0 auto;
         h1 {
             font-size: 30px;
             text-align: center;
+            margin-top: 30px;
+          font-family: 'Oleo Script', cursive;
+        }
+        .btn {
+          margin-top: 60px;
         }
     }
     .device-container {
@@ -27,8 +34,7 @@ header.masthead {
         }
     }
     @media (min-width: 992px) {
-        height: 100vh;
-        min-height: 775px;
+        min-height: 550px;
         padding-bottom: 0;
         .header-content {
             margin-bottom: 0;

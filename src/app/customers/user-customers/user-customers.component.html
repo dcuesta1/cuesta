@@ -1,29 +1,39 @@
-<div class="container-fluid component-container offWhite">
-    <!-- Title & Navigation -->
-    <div class="title-header title-header--nav-right">
-        <div class="row" style="width:100%">
-            <div class="col-lg-8 title-header_title title-header--nav-right_title">Customers</div>
-            <div  class="col-lg-4 title-header_navigation">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLinkActive]="['active']" routerLink="/{{_currentUser.username}}/customers">Directory</a>
-                    </li>
-                    <li class="nav-item">
-                        <a disabled class="nav-link disabled" [routerLinkActive]="['active']" routerLink="/{{_currentUser.username}}/customers/settings">Settings</a>
-                    </li>
-                </ul>
-            </div>
-        </div>  
+<!-- Title & Navigation -->
+<div class="title-header title-header--nav-right">
+  <div class="row" style="width:100%">
+    <div class="col-lg-8 title-header_title title-header--nav-right_title">
+      <span
+        *ngFor="let breadCrumb of local.getLocationPath(); let i = index"
+        [class.title-header_breadcrumb-item-root]="!i"
+        class="title-header_breadcrumb-item">
+        {{ breadCrumb }}
+      </span>
     </div>
+    <div class="col-lg-4 title-header_navigation">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="/customers">Directory</a>
+        </li>
+        <li class="nav-item">
+          <a disabled class="nav-link disabled" [routerLinkActive]="['active']" routerLink="/customers/settings">Settings</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Main -->
+<div class="container-fluid component-container offWhite">
     <div class="row" style="padding: 10px 0">
         <div class="col-lg-8">
             <div class="col-sm-4 left">
                 <!-- <input [(ngModel)]="searchInput" type="text" placeholder="Search.." class="form-control"/> -->
-                <button *ngIf="deleteCustomers.length > 0" class="btn btn-danger" (click)="openModal('deleteCustomersModal')">Remove</button>
+              <button *ngIf="deleteCustomers.length > 0" class="btn btn-theme-tertiary"
+                      (click)="openModal('deleteCustomersModal')">Remove
+              </button>
             </div>
         </div>
         <div class="col-lg-4">
-            <button (click)="openModal('addCustomerModal')" class="btn btn-primary right">Create Customer</button>
+          <button (click)="openModal('addCustomerModal')" class="btn btn-theme-secondary right">Create Customer</button>
         </div>
     </div>
   <table class="table componentTable">
@@ -60,7 +70,9 @@
                     <div class="customerPane_main-header">
                         Personal Information
                     </div>
-                    <button class="btn btn-link" (click)="openModal('editCustomerModal')">Edit Customer</button>
+                  <button class="btn btn-link btn-theme-secondary" (click)="openModal('editCustomerModal')">Edit
+                    Customer
+                  </button>
                 </div>
                 <table class="table">
                     <tbody>
@@ -88,7 +100,9 @@
                     <div class="customerPane_main-header">
                         Vehicles
                     </div>
-                    <button class="btn btn-link right" (click)="openModal('newVehicleModal')">New Vehicle</button>
+                  <button class="btn btn-link theme-secondary right" (click)="openModal('newVehicleModal')">New
+                    Vehicle
+                  </button>
                 </div>
                 <table class="table">
                     <tbody>
@@ -106,10 +120,12 @@
                             <td>{{car.year}}</td>
                             <td>{{car.number}}</td>
                             <td class="row-button">
-                                <button (click)="openEditVehicleModal(car)" class="btn btn-link"><i class="fa fa-pencil"></i></button>
+                              <button (click)="openEditVehicleModal(car)" class="btn btn-link theme-secondary"><i
+                                class="fa fa-pencil"></i></button>
                             </td>
                             <td class="row-button">
-                                <button (click)="openDeleteVehicleModal(car)" class="btn btn-link danger"><i class="fa fa-trash"></i></button>
+                              <button (click)="openDeleteVehicleModal(car)" class="btn btn-link theme-tertiary"><i
+                                class="fa fa-trash"></i></button>
                             </td>
                         </tr>
     </tbody>
@@ -134,7 +150,8 @@
             </div>
         </div>
         <div class="sidePopup_bottom-pane">
-            <button class="btn btn-primary sidePopup_bottom-pane_button" (click)="closeCustomerPane()">Done</button>
+          <button class="btn btn-theme-secondary sidePopup_bottom-pane_button" (click)="closeCustomerPane()">Done
+          </button>
         </div>
     </div>
 </div>
@@ -170,8 +187,8 @@
           <div class="editCustomerModal-header">Remove Customers</div>
           <div class="editCustomerModal_body--tiny">Warning! Are you sure you want to continue? this action is not reversable</div>
           <div class="modal-actions">
-            <button class="btn btn-outline-danger left" (click)="cancelDeleteCustomers()">Cancel</button>
-            <button class="btn btn-danger right" (click)="confirmDeleteCustomers()">Remove</button>
+            <button class="btn btn-outline-theme-tertiary left" (click)="cancelDeleteCustomers()">Cancel</button>
+            <button class="btn btn-theme-tertiary right" (click)="confirmDeleteCustomers()">Remove</button>
           </div>
         </div>            
       </div>

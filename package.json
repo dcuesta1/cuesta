@@ -1,5 +1,5 @@
 {
-  "name": "Cuesta",
+  "name": "cuesta",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
     "watch-poll": "npm run watch -- --watch-poll",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
@@ -27,11 +27,15 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.8",
+    "@ng-bootstrap/ng-bootstrap": "^1.1.2",
     "angular-async-local-storage": "^3.1.0",
     "core-js": "^2.5.5",
-    "rxjs": "^5.5.9",
+    "jquery-validation": "^1.17.0",
+    "laravel-mix": "^1.4.2",
+    "ng2-validation": "^4.2.0",
+    "rxjs": "^5.5.10",
     "underscore": "^1.8.3",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
@@ -40,11 +44,12 @@
     "@angular/language-service": "^5.0.0",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
-    "@types/node": "^6.0.105",
+    "@types/node": "^6.0.106",
     "bootstrap": "^4.1.0",
     "bootstrap-sass": "^3.3.7",
     "codelyzer": "^4.0.1",
     "cross-env": "^5.1.4",
+    "eslint": "^4.19.1",
     "font-awesome": "4.7.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
@@ -60,9 +65,12 @@
     "node-sass": "^4.8.3",
     "popper.js": "^1.14.3",
     "protractor": "~5.1.2",
-    "simple-line-icons": "2.4.1",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
+    "tslint-consistent-codestyle": "^1.13.0",
+    "tslint-eslint-rules": "^5.1.0",
+    "tslint-origin-ordered-imports-rule": "^1.0.4",
+    "tslint-rxjs-subject-restrictions-rule": "^1.0.4",
     "typescript": "~2.4.2"
   }
 }

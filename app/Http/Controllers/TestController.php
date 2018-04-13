@@ -1,8 +1,8 @@
 <?php
 
-namespace Api\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Api\User;
+use App\User;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -43,7 +43,7 @@ class TestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Api\User  $user
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
@@ -54,7 +54,7 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Api\User  $user
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)

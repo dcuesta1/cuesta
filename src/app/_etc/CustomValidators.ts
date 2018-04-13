@@ -1,4 +1,4 @@
-import { ValidatorFn, FormGroup, Validators, ValidationErrors, AbstractControl } from "@angular/forms";
+import { AbstractControl, ValidationErrors, Validators } from '@angular/forms';
 
 export let CustomValidators = {
     emailOrEmpty: function(control: AbstractControl): ValidationErrors | null {
@@ -10,9 +10,11 @@ export let CustomValidators = {
         const password = control.root.get('password');
         const confirm = control.value;
 
-        if (!password || !confirm) return null;
+      if (!password || !confirm) {
+        return null;
+      }
 
-        if( password.value === confirm ) {
+      if (password.value === confirm) {
             return null;
         }
         return { nomatch: true };
@@ -20,7 +22,7 @@ export let CustomValidators = {
 
     default: (value: string) => {
         return (control: AbstractControl) => {
-          if(control.value == value){
+          if (control.value === value) {
             return {
                default: {valid: false}
             };
@@ -28,4 +30,4 @@ export let CustomValidators = {
           return null;
         };
     }
-}
+};

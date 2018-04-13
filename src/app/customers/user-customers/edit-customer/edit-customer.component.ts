@@ -1,15 +1,15 @@
-import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '../../../_models/Customer';
-import { CustomValidators } from '../../../_etc/CustomValidators'
-import {states, st} from '../../../_etc/formHelpers';
+import { CustomValidators } from '../../../_etc/CustomValidators';
+import { st, states } from '../../../_etc/formHelpers';
 import { ModalService } from '../../../_services/modal.service';
 import { CustomerService } from '../../../_services/customer.service';
 
 @Component({
     selector: 'edit-customer',
     templateUrl: './edit-customer.component.html',
-    styleUrls: ['./edit-customer.component.scss'],
+  styleUrls: ['../../../../assets/sass/edit-customer.component.scss']
 })
 
 export class EditUserComponent implements OnChanges {

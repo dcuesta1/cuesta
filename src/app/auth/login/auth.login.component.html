@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="loginFormContainer is-Responsive">
+      <div id="logo-container"><span class="logo">Cuesta</span></div>
+      <div class="col-sm-12 col-md-10 col-md-offset-1 mx-auto">
+        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" id="loginForm">
+          <div class="form-group input-group">
+            <!--<span class="input-group-addon"><i class=""></i></span>-->
+            <input formControlName="email" type="text" class="form-control" id="email" placeholder="Username or email">
+          </div>
+          <div class="form-group input-group">
+            <!--<span class="input-group-addon"><i class=""></i></span>-->
+            <input formControlName="password" type="password" class="form-control" id="password" placeholder="password">
+          </div>
+          <!--<div class="checkbox">-->
+          <!--<label>-->
+          <!--<input type="checkbox"> Remember me-->
+          <!--</label>-->
+          <!--</div>-->
+          <div class="form-group">
+            <button [disabled]="!loginForm.valid" type="submit" class="btn btn-def btn-block mx-auto">Sign in</button>
+          </div>
+          <div class="form-group text-center loginLinks">
+            <a routerLink="/register" class="left">Register</a>
+            <a href="#" class="right">Forgot Password</a>
+          </div>
+          <div class="form-group loginLinks">
+            <a href="{{ homeUrl }}" class="left"><i class="fa fa-arrow-left"></i> Back to Home</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

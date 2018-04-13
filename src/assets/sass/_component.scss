@@ -1,0 +1,156 @@
+.component > div {
+  a {
+    color: $theme-secondary;
+  }
+
+  width: 100%;
+
+  .title-header {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    margin-bottom: 18px;
+    background: #d8d8d8;
+  }
+
+  .title-header--nav-right {
+    flex-wrap: wrap;
+    -webkit-box-align: end;
+    align-items: flex-end;
+    min-height: 57px;
+  }
+
+  .title-header_title {
+    line-height: 1.454;
+    color: $theme-primary;
+    font-weight: 300;
+
+    .title-header_breadcrumb-item-root {
+      font-size: 28px;
+      font-family: $theme-header-font;
+    }
+
+    .title-header_breadcrumb-item:not(:first-child) {
+      color: $theme-tertiary;
+
+      &:before {
+        display: inline-block;
+        padding-right: 0.5rem;
+        color: $theme-secondary;
+        content: "/";
+      }
+    }
+  }
+
+  .title-header--nav-right_title {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    padding: 17px 18px 17px 40px;
+  }
+
+  .title-header_navigation {
+    position: relative;
+    bottom: -36px;
+
+    a {
+      color: $theme-secondary;
+      font-family: $theme-header-font;
+
+      &:hover:enabled {
+        background: $theme-tertiary;
+        color: white;
+      }
+
+      &.active, &.active:hover {
+        background: #fff;
+        color: $theme-tertiary;
+        cursor: context-menu;
+      }
+    }
+  }
+
+  /**
+      Filter Bar & Action
+  */
+
+  .filter-bar-border-top {
+    border-top: 1px solid #ccc;
+    margin-top: 15px
+  }
+
+  .filter-bar {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .filet-bar_filters {
+    -webkit-box-flex: 0;
+    flex: 0 1 auto;
+  }
+
+  .filter-bar_actions {
+    -webkit-box-flex: 0;
+    flex: none;
+    margin-left: 12px;
+  }
+
+  .filter-bar_actions .btn {
+    float: right !important;
+  }
+
+  /**
+      Component body & sidebar
+  */
+
+  .componentMain {
+    margin: 0 auto;
+  }
+
+  .component-sidebar a.active {
+    background: $theme-secondary;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .key-stat {
+    color: #1f2428;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.333;
+  }
+
+  .key-stat-label {
+    color: #5c6063;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.667;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .componentTable tr,
+  .componentTable th,
+  .componentTable td {
+    border-color: #ccc !important;
+  }
+}
+
+/*
+  Component Table Styles
+ */
+
+.componentTable {
+  &.clickableRows {
+
+    tbody {
+      tr:hover {
+        cursor: pointer;
+        background: #bbdefb;
+      }
+    }
+  }
+}
