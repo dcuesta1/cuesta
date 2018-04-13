@@ -5,10 +5,10 @@
  * @author: Cuesta
  */
 
-namespace Api\Http\Controllers;
-use Api\Car;
-use Api\Customer;
-use Api\Exceptions\ModelNotFoundException;
+namespace App\Http\Controllers;
+use App\Car;
+use App\Customer;
+use App\Exceptions\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class CarController extends Controller

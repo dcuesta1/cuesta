@@ -1,6 +1,6 @@
 <?php
 
-namespace Api;
+namespace App;
 
 use Illuminate\Database\Eloquent\{ Model, SoftDeletes};
 
@@ -51,6 +51,6 @@ class Settings extends Model
 
     public function user()
     {
-        return $this->belongsTo('Api\User');
+        return $this->belongsTo('App\User');
     }
 }

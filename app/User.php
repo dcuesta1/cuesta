@@ -1,6 +1,6 @@
 <?php
 
-namespace Api;
+namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -78,16 +78,21 @@ class User extends Authenticatable
 
 	public function authTokens()
 	{
-		return $this->hasMany('Api\AuthToken');
+		return $this->hasMany('App\AuthToken');
 	}
 
 	public function invoices()
     {
-        return $this->hasMany('Api\Invoice')->orderByDesc('created_at');
+        return $this->hasMany('App\Invoice')->orderByDesc('created_at');
     }
 
     public function customers()
     {
-        return $this->hasMany(('Api\Customer'));
+        return $this->hasMany('App\Customer');
+    }
+
+    public function settings()
+    {
+        return $this->hasOne('App\Settings');
     }
 }

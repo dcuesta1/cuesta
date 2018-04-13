@@ -1,6 +1,6 @@
 <?php
 
-namespace Api;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,6 @@ class AuthToken extends Model
 
     public function user()
     {
-    	return $this->belongsTo('Api\User');
+    	return $this->belongsTo('App\User');
     }
 }

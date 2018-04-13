@@ -1,9 +1,9 @@
 <?php
 
-namespace Api\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Api\Exceptions\BadInputException;
-use Api\{
+use App\Exceptions\BadInputException;
+use App\{
     Http\PaymentHelper, Invoice, Payment
 };
 use Illuminate\Http\Request;

@@ -1,11 +1,5 @@
 <?php
-/**
- * Item Model Class for labor hrs and parts prices.
- *
- * @author: Cuesta
- */
-
-namespace Api;
+namespace App;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +18,6 @@ class Item extends Model
 
     public function invoice()
     {
-        return $this->belongsTo('Api\Invoice');
+        return $this->belongsTo('App\Invoice');
     }
 }

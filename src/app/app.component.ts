@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GLobalEventsManager } from './_etc/GlobalEventsManager';
-import { environment } from "../environments/environment"
+import { environment } from '../environments/environment';
 import { LocalService } from './_services/local.service';
 
 @Component({
@@ -12,22 +12,21 @@ import { LocalService } from './_services/local.service';
     <div class="col fluid d-flex flex-column"  style="overflow:auto">
       <div class="row flex-grow">
         <router-outlet></router-outlet>
-      </div>  
-    </div>
-  `
+      </div>
+    </div>`
 })
 export class AppComponent {
-  showNavigations: boolean = false;
+  showNavigations = false;
 
   constructor(
     private globalEventsManager: GLobalEventsManager,
     private local: LocalService
-  ){
-    if(local.getAuthToken()) {
+  ) {
+    if (local.getAuthToken()) {
       this.globalEventsManager.showNavigations(true);
     }
 
-    this.globalEventsManager.showNavEmitter.subscribe((mode)=> {
+    this.globalEventsManager.showNavEmitter.subscribe((mode) => {
       this.showNavigations = mode;
     });
   }

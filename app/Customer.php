@@ -1,6 +1,6 @@
 <?php
 
-namespace Api;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,12 +22,12 @@ class Customer extends Model
 
     public function invoices()
     {
-        return $this->belongsToMany('Api\Invoice');
+        return $this->belongsToMany('App\Invoice');
     }
 
     public function cars()
     {
-        return $this->hasMany('Api\Car');
+        return $this->hasMany('App\Car');
     }
 
     /* Getters */

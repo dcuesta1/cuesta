@@ -1,10 +1,10 @@
 <?php
 
-namespace Api\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Api\AuthToken;
-use Api\Exceptions\BadInputException;
-use Api\Exceptions\UnauthorizedAccessException;
+use App\AuthToken;
+use App\Exceptions\BadInputException;
+use App\Exceptions\UnauthorizedAccessException;
 use Illuminate\Http\Request;
 use Auth;
 

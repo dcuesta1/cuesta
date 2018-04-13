@@ -25,9 +25,9 @@
             "database/faker"
         ],
         "psr-4": {
-            "Api\\": "api/"
+            "App\\": "app/"
         },
-        "files": ["api/Http/helpers.php"]
+        "files": ["app/Http/helpers.php"]
     },
     "autoload-dev": {
         "psr-4": {

@@ -5,8 +5,8 @@
  * @author: Cuesta
  */
 
-namespace Api\Policies;
-use Api\User;
+namespace App\Policies;
+use App\User;
 
 interface PolicyInterface
 {

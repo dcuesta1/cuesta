@@ -1,14 +1,14 @@
 <?php
 
-namespace Api\Http;
+namespace App\Http;
 
 
-use Api\Invoice;
+use App\Invoice;
 use Illuminate\Validation\Rules\In;
 
 /**
  * Class PaymentHelper
- * @package Api\Http
+ * @package App\Http
  */
 class PaymentHelper
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Api\Policies;
+namespace App\Policies;
 
-use Api\{User, Invoice};
+use App\{User, Invoice};
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class InvoicePolicy implements PolicyInterface

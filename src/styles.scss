@@ -128,6 +128,10 @@ select.form-control, option{
     width: 100%;
 }
 
+.logincomponent {
+    background: #ffc300 !important;
+}
+
 #loginCover{
     width: 100%;
     height: 100%;
@@ -357,6 +361,15 @@ body.modal-open {
     overflow: hidden;
 }
 
+.input-group-addon{
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-left: 1px solid #ced4da;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 5px 0 5px;
+}
+
 /* fixed and fluid only on sm and up */
 @media (min-width: 576px) {
     .fixed {
@@ -367,3 +380,4 @@ body.modal-open {
        min-height: 100vh;
     }
 }
+

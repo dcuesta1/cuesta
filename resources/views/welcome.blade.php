@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="{{ app()->getLocale() }}">
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -15,13 +13,13 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
     <link href="css/main.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
-
+<div id="comps"></div>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -48,18 +46,16 @@
         </div>
     </div>
 </nav>
-
 <header class="masthead">
-    <div class="container">
-        <div class="row">
-            <div class="header-content">
-                <h1>The Smart and Simple Way to Run Your Repair Shop</h1>
-                <h5>Say goodbye to complex software and the chaos of printed paper.
-                    Say hello to cleaner way to handle business.</h5>
-                <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
+        <div class="container">
+            <div class="row">
+                <div class="header-content">
+                    <h1>Easy Auto Repair Shop Software</h1>
+                    <h5>Powerful, Reliable and Easy to use automotive software solution for mechanics and small auto repair shop.</h5>
+                    <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a>
+                </div>
             </div>
         </div>
-    </div>
 </header>
 
 <section class="download bg-primary text-center" id="download">
@@ -67,11 +63,11 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="feature-item">
-                    <span class="fa-stack fa-lg" style="font-size:40px">
-                      <i class="fa fa-pencil fa-stack-2x" aria-hidden="true"></i>
+                    <span class="fa-stack fa-lg" style="font-size:31px">
+                      <i class="fa fa-pencil fa-stack-2x" style="font-size:64px" aria-hidden="true"></i>
                       <i class="fa fa-wrench fa-flip-horizontal fa-stack-2x fa-inverse"></i>
                     </span>
-                    <h3>Design Driven</h3>
+                    <h3>Easily Run your Repair Shop</h3>
                     <p class="text-muted">We lead with design and fine-tune our software to provide a clean, modern user-experience.</p>
                 </div>
             </div>
@@ -79,14 +75,14 @@
                 <div class="feature-item">
                     <i class="fa fa-newspaper-o fa-4x" aria-hidden="true"></i>
                     <h3>Phone & Tablet Ready</h3>
-                    <p class="text-muted">Never worry about switching devices. Cuesta app is accessible and easy to use on any tablet or phone.</p>
+                    <p class="text-muted">Never worry about switching devices. The Cuesta App is accessible and easy to use on any computer, tablet or phone.</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="feature-item">
-                    <i class="fa fa-newspaper-o fa-4x" aria-hidden="true"></i>
-                    <h3>Free Support</h3>
-                    <p class="text-muted">We’re here for you. We provide training and support at no additional cost.</p>
+                    <i class="fa fa-credit-card fa-4x" aria-hidden="true"></i>
+                    <h3>Card Processor</h3>
+                    <p class="text-muted">Take credit card payments and receive deposits directly to your bank.</p>
                 </div>
             </div>
         </div>
@@ -97,7 +93,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 my-auto">
-                image
+                <img src="{{ URL::asset('/images/mechanic-home.jpg')}}" alt="mechanic"/>
             </div>
             <div class="col-lg-8 my-auto">
                 <div class="container-fluid">
@@ -116,7 +112,7 @@
                 </div>
             </div>
             <div class="col-lg-4 my-auto">
-               image
+                <img src="{{ URL::asset('/images/mechanic-home.jpg')}}" alt="mechanic"/>
             </div>
         </div>
     </div>

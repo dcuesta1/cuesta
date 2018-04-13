@@ -5,7 +5,7 @@
  * @author: Cuesta
  */
 
-namespace Api\AutoTelematic\models;
+namespace App\AutoTelematic\models;
 
 
 class Message extends BaseModel

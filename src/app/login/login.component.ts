@@ -8,9 +8,10 @@ import { LocalService } from '../_services/local.service';
 
 @Component({
   selector: '.loginComponent',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent{
+export class LoginComponent {
 
   loginForm: FormGroup;
 
@@ -20,9 +21,9 @@ export class LoginComponent{
     private authService: AuthService,
     private globalEventsManager: GLobalEventsManager,
     private local: LocalService
-  ) { 
+  ) {
 
-    if(local.getCurrentUser()) {
+    if (local.getCurrentUser()) {
       this.router.navigate(['/dashboard']);
     }
 
@@ -32,7 +33,7 @@ export class LoginComponent{
     });
   }
 
-  login(inputs:any) :void {
+  login(inputs: any): void {
     this.authService.authenticate(inputs.email, inputs.password)
       .subscribe(
         (user: User) => {
@@ -43,5 +44,5 @@ export class LoginComponent{
       );
   }
 
-  //TODO: register methods
+  // TODO: register methods
 }

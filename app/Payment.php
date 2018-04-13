@@ -1,6 +1,6 @@
 <?php
 
-namespace Api;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -31,7 +31,7 @@ class Payment extends Model
 
     public function invoice()
     {
-        return $this->belongsTo('Api\Invoice');
+        return $this->belongsTo('App\Invoice');
     }
 
     public static function generateRef(int $invoiceId, int $type) : int

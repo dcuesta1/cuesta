@@ -1,58 +1,89 @@
-
 <div class="container">
-  <form class="col-lg-12" [formGroup]="businessInfoForm" (ngSubmit)="updatePersonalSettings(businessInfoForm.value)">
+  <form *ngIf="settings" class="col-lg-12" [formGroup]="businessInfoForm" (ngSubmit)="updateBusinessSettings(businessInfoForm.value)">
     <h4>Basic Information</h4>
     <div class="form-group row ">
-      <label for="name" class="col-sm-2 col-form-label">Full Name</label>
+      <label for="business_name" class="col-sm-2 col-form-label">Business Name</label>
       <div class="col-sm-6">
         <input 
           type="text" 
           class="form-control" 
-          id="name" 
+          id="business_name"
           placeholder="John Smith" 
-          formControlName="name"/>
+          formControlName="business_name"/>
       </div>
     </div>
     <div class="form-group row">
-      <label for="email" class="col-sm-2 col-form-label">Email Address</label>
+      <label for="business_email" class="col-sm-2 col-form-label">Business Email</label>
       <div class="col-sm-6">
         <input 
           type="email" 
           class="form-control" 
-          id="email" 
-          placeholder="jsmith@emailcom" 
-          formControlName="email"
+          id="business_email"
+          placeholder="hello@company.com"
+          formControlName="business_email"
           value=" ">
       </div>
     </div>
-    <h4>Password</h4>
+    <div class="form-group row">
+      <label for="business_phone" class="col-sm-2 col-form-label">Business Phone</label>
+      <div class="col-sm-6">
+        <input
+          type="text"
+          class="form-control"
+          id="business_phone"
+          placeholder="888-555-5555"
+          formControlName="business_phone"
+          value=""
+          pattern="'(/[1-9]//\d//\d/)/\d//\d//\d/'-'/\d//\d//\d//\d/"
+          phone>
+      </div>
+    </div>
+    <h4>Invoice Taxes & Fees</h4>
     <div class="row">
       <div class="col-sm-6">
-      <p>A strong password contains a mix of numbers, letters, and symbols. It is hard to guess, does not resemble a real word, and is only used for this account.</p>
+      <p>Setup additional fees and taxes to be added to your invoices.</p>
       </div>
     </div>
-    <div class="form-group row">
-      <label for="password" class="col-sm-2 col-form-label">Password</label>
-      <div class="col-sm-6">
-        <input 
-          type="password" 
-          class="form-control" 
-          id="password" 
-          formControlName="password"
-          placeholder="Password">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="password_confirm" class="col-sm-2 col-form-label">Confirm Password</label>
-      <div class="col-sm-6">
-        <input 
-          type="password" 
-          class="form-control" 
-          id="password_confirm"
-          formControlName="password_confirm" 
-          placeholder="Confirm password">
-      </div>
-    </div>
+   <div class="row">
+     <div class="col-sm-3">
+       <div class="card">
+         <div class="card-header">
+           Taxes
+         </div>
+         <div class="card-body">
+           <div class="input-group">
+             <span class="input-group-addon">%</span>
+             <input
+               type="text"
+               class="form-control"
+               id="tax"
+               placeholder="7.00"
+               formControlName="tax"
+               value=" ">
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-3">
+       <div class="card">
+         <div class="card-header">
+           Fees
+         </div>
+         <div class="card-body">
+           <div class="input-group">
+             <span class="input-group-addon">%</span>
+             <input
+               type="text"
+               class="form-control"
+               id="fee"
+               placeholder="2.50"
+               formControlName="fee"
+               value="">
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
     <br>
     <button 
       [disabled]="businessInfoForm.invalid || (businessInfoForm.pristine && businessInfoForm.valid)"

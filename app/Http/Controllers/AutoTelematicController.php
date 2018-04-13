@@ -5,8 +5,8 @@
  * @author: Cuesta
  */
 
-namespace Api\Http\Controllers;
-use Api\AutoTelematic\AutoTelematic;
+namespace App\Http\Controllers;
+use App\AutoTelematic\AutoTelematic;
 use Symfony\Component\HttpFoundation\Response;
 
 class AutoTelematicController

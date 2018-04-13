@@ -22,12 +22,23 @@ Route::group(['middleware' => ['auth.api']], function () {
     });
 
     // --Super
-    Route::middleware(['can:super,Api\User'])->group(function () {
+    Route::middleware(['can:super,App\User'])->group(function () {
         //Users
         Route::get('/users', 'UserController@all');
         Route::get('/users/role/{role}', 'UserController@getUsersByRole');
         Route::post('/users', 'UserController@store');
         Route::delete('/users/{user}', 'UserController@destroy');
+    });
+
+    /*
+     *  SETTINGS
+     */
+
+    Route::get('/users/{user}/settings', 'SettingsController@get');
+    Route::put('/users/{user}/settings', 'SettingsController@update');
+
+    //--Admin
+    Route::middleware(['can:admin,App\User'])->group(function () {
     });
 
     /*
@@ -44,7 +55,7 @@ Route::group(['middleware' => ['auth.api']], function () {
     Route::post('/invoices', 'InvoiceController@store');
 
     //--Super
-    Route::middleware(['can:super,Api\Invoice'])->group(function () {
+    Route::middleware(['can:super,App\Invoice'])->group(function () {
         Route::get('/invoices', 'InvoiceController@all');
     });
 
@@ -57,7 +68,7 @@ Route::group(['middleware' => ['auth.api']], function () {
 //        Route::post('/invoices/{invoice}/payments', 'PaymentController@store');
 //    });
     //--Super
-//    Route::middleware(['can:super,Api\Payment'])->group(function (){
+//    Route::middleware(['can:super,App\Payment'])->group(function (){
 //        Route::get('/invoices/payments', 'PaymentController@all');
 //        Route::put('/invoices/{invoice}/payments', 'PaymentController@update');
 //        Route::destroy('/invoices/{id}/payments', 'PaymentController@destroy');
@@ -68,7 +79,7 @@ Route::group(['middleware' => ['auth.api']], function () {
      *  CUSTOMERS
      */
     //--Admin
-    Route::middleware(['can:admin,Api\Customer'])->group(function (){
+    Route::middleware(['can:admin,App\Customer'])->group(function (){
         Route::get('/customers/{customer}', 'CustomerController@get');
         Route::put('customers/{customer}', 'CustomerController@update');
         Route::patch('/user/{username}/customers/delete', 'CustomerController@destroyMultiple');
@@ -77,7 +88,7 @@ Route::group(['middleware' => ['auth.api']], function () {
     Route::post('/customers', 'CustomerController@store');
 
     //--Super
-//    Route::get('/customers', 'CustomerController@all')->middleware('can:super,Api\Customer');
+//    Route::get('/customers', 'CustomerController@all')->middleware('can:super,App\Customer');
 
     /*
      *  CARS

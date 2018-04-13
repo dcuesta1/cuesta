@@ -1,8 +1,8 @@
 <?php
 
-namespace Api\Auth;
-use Api\AuthToken;
-use Api\Exceptions\UnauthorizedAccessException;
+namespace App\Auth;
+use App\AuthToken;
+use App\Exceptions\UnauthorizedAccessException;
 use Auth;
 use Carbon\Carbon;
 use Hash;

@@ -1,0 +1,13 @@
+#loginComponent {
+  margin: 0 auto;
+  text-align: center;
+  .card{
+    border-radius: 20px;
+  }
+  form{
+    padding: 10px;
+    input, .input-group-addon {
+      border: 0;
+    }
+  }
+}

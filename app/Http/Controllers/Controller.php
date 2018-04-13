@@ -1,8 +1,8 @@
 <?php
 
-namespace Api\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Api\User;
+use App\User;
 use Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

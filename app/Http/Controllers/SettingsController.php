@@ -1,9 +1,9 @@
 <?php
 
-namespace Api\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Api\Exceptions\{ModelNotFoundException, BadInputException};
-use Api\{Settings, User};
+use App\Exceptions\{ModelNotFoundException, BadInputException};
+use App\{Settings, User};
 use Illuminate\Http\Request;
 use Input, Validator;
 
@@ -16,13 +16,22 @@ class SettingsController extends Controller
         return $allSettings;
     }
 
-    public function get(Settings $settings)
+    public function get(User $user)
     {
+        $user = $this->user()->isSuperuser() ? $user : $this->user();
+        $settings = $user->settings;
+
         return $settings;
     }
 
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $user = $this->user()->isSuperuser() ? $user : $this->user();
+
         $this->validate($request, [
             'business_name' => 'required|max:191',
             'business_email' => 'required|unique:settings|email',
@@ -32,16 +41,11 @@ class SettingsController extends Controller
             'fee' => 'nullable|numeric',
         ]);
 
-        #TODO: make sure that plan types cannot be manipulated
-        $settings = new Settings($request->all());
+        $settings = $user->settings;
+        $settings->update($request->all());
         $settings->save();
 
         return $settings;
-    }
-
-    public function update(Request $request, $id)
-    {
-
     }
 
     public function destroy(Settings $settings)

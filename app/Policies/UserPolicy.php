@@ -1,8 +1,8 @@
 <?php
 
-namespace Api\Policies;
+namespace App\Policies;
 
-use Api\User;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy implements PolicyInterface
