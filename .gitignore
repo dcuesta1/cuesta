@@ -8,6 +8,7 @@
 mix-manifest.json
 /storage/*.key
 /vendor
+/public
 /.idea
 /.vagrant
 Homestead.json

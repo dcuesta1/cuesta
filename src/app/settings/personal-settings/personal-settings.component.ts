@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../_models/User';
 import { LocalService } from '../../_services/local.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { CustomValidators } from '../../_etc/CustomValidators';
 import { UserService } from '../../_services/user.service';
 
