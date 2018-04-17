@@ -11,13 +11,21 @@ import { UserService } from '../../_services/user.service';
 })
 export class PersonalSettingsComponent implements OnInit {
   public currentUser: User;
+  private _impersonating;
   public personalInfoForm: FormGroup;
   constructor(
     private _local: LocalService,
     private _fb: FormBuilder,
     private _userService: UserService
   ) {
-    this.currentUser = new User(_local.getCurrentUser());
+    this._impersonating = _local.getImpersotedUser();
+
+    if (this._impersonating) {
+      this.currentUser = new User(this._impersonating);
+    } else {
+      this.currentUser = new User(_local.getCurrentUser());
+    }
+
     this.personalInfoForm = _fb.group({
       'name': [this.currentUser.name, [Validators.required]],
       'email': [this.currentUser.email, [Validators.email]],
