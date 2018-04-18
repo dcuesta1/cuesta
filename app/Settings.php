@@ -20,10 +20,11 @@ class Settings extends Model
     protected $fillable = [
         'business_name',
         'business_email',
-        'business_email',
+        'business_phone',
+        'user_id', // TODO: remove, server should establish it
         'fee',
         'tax',
-        'plan',
+        'plan', // TODO: remove, server should establish it
         'expiration',
         'sq_merchant_id',
         'sq_subscription_id'

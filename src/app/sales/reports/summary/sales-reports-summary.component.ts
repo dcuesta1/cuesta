@@ -36,8 +36,10 @@ export class SalesReportsSummaryComponent implements OnInit {
   public netTotalNet = 0.00;
   private _impersonating;
 
-  constructor(public local: LocalService,
-              private _invoiceService: InvoiceService,) {
+  constructor(
+    public local: LocalService,
+    private _invoiceService: InvoiceService
+  ) {
     this._impersonating = local.getImpersotedUser();
     this.currentUser = new User(local.getCurrentUser());
 

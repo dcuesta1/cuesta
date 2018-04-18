@@ -34,16 +34,23 @@ class SettingsController extends Controller
 
         $this->validate($request, [
             'business_name' => 'required|max:191',
-            'business_email' => 'required|unique:settings|email',
+            'business_email' => 'required|email',
             'business_phone' => 'required|max:191',
             'plan' => 'required|numeric',
             'tax' => 'nullable|numeric',
             'fee' => 'nullable|numeric',
         ]);
 
-        $settings = $user->settings;
-        $settings->update($request->all());
-        $settings->save();
+        $settings = Settings::updateOrCreate( [ 'user_id' => $user->id ] ,
+            [
+                'business_name' => $request->input('business_name'),
+                'business_phone' => $request->input('business_phone'),
+                'business_email' => $request->input('business_email'),
+                'plan' => $request->input('plan'),
+                'fee' => $request->input('fee'),
+                'tax' => $request->input('tax'),
+            ]
+        );
 
         return $settings;
     }

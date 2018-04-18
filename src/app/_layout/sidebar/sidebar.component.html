@@ -2,7 +2,7 @@
   <i class="fa fa-angle-double-left"></i>
 </div>
 
-<ul class="list-unstyled components" *ngIf="currentUser.isSuperUser && !impersonate">
+<ul class="list-unstyled components" *ngIf="currentUser.isSuperUser() && !impersonate">
   <li class="menu-header">Main Menu</li>
   <li class="active">
     <a routerLink="mod/dashboard">

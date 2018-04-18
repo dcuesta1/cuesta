@@ -3,7 +3,7 @@
     <div class="registerFormContainer is-Responsive">
       <div id="logo-container"><span class="logo">Cuesta</span></div>
       <div class="col-sm-12 col-md-10 col-md-offset-1 mx-auto">
-        <form [formGroup]="registerForm" (ngSubmit)="login(registerForm.value)" id="loginForm">
+        <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)" id="loginForm">
           <div class="form-group input-group">
             <!--<span class="input-group-addon"><i class=""></i></span>-->
             <div class="input-group-prepend fullName">
@@ -45,9 +45,6 @@
           <div class="form-group text-center loginLinks">
             <a href="{{ homeUrl }}" class="left"><i class="fa fa-arrow-left"></i> Back to Home</a>
             <a routerLink="/login" class="right">Sign in</a>
-          </div>
-          <div class="form-group loginLinks">
-
           </div>
         </form>
       </div>

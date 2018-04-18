@@ -4,43 +4,43 @@ import { User } from '../_models/User';
 
 @Injectable()
 export class LocalService {
-  getLocationPath() {
+  public getLocationPath() {
     return window.location.pathname.substr(1).split('/');
   }
 
-  getImpersotedUser(): User {
+  public getImpersotedUser(): User {
     return JSON.parse(localStorage.getItem(environment.local.impersonate));
   }
 
-  setImpersotedUser(user: User): void {
+  public setImpersotedUser(user: User): void {
     localStorage.setItem(environment.local.impersonate, JSON.stringify(user));
   }
 
-  getCurrentUser(): string | null {
+  public getCurrentUser(): string | null {
     return JSON.parse(localStorage.getItem(environment.local.currentUser));
   }
 
-  public SetCurrentUser(user: User): void {
+  public setCurrentUser(user: User): void {
     localStorage.setItem(environment.local.currentUser, JSON.stringify(user));
   }
 
-  getDeviceId(): string | null {
+  public getDeviceId(): string | null {
     return localStorage.getItem(environment.local.deviceId);
   }
 
-  SetDeviceId(deviceId: string): void {
+  public setDeviceId(deviceId: string): void {
     localStorage.setItem(environment.local.deviceId, deviceId);
   }
 
-  getAuthToken(): string | null {
+  public getAuthToken(): string | null {
     return localStorage.getItem(environment.local.authToken);
   }
 
-  SetAuthToken(authToken: string): void {
+  public setAuthToken(authToken: string): void {
     localStorage.setItem(environment.local.authToken, authToken);
   }
 
-  clear(): void {
+  public clear(): void {
     localStorage.clear();
   }
 }

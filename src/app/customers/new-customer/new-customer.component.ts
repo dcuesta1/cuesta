@@ -19,10 +19,12 @@ export class NewCustomerComponent implements OnInit {
   public st;
   public _currentUser: User;
 
-  constructor(private _customerService: CustomerService,
-              private _modalService: ModalService,
-              private _fb: FormBuilder,
-              private _local: LocalService) {
+  constructor(
+    private _customerService: CustomerService,
+    private _modalService: ModalService,
+    private _fb: FormBuilder,
+    private _local: LocalService
+  ) {
     this.states = states;
     this.st = st;
     this._currentUser = new User(_local.getCurrentUser());
@@ -32,7 +34,7 @@ export class NewCustomerComponent implements OnInit {
     this.addCustomerForm = this._fb.group({
       'first_name': [null, [Validators.required, Validators.minLength(3)]],
       'last_name': [null, [Validators.required, Validators.minLength(3)]],
-      'phone': [null, [Validators.required,]],
+      'phone': [null, [Validators.required]],
       'email': [null, [Validators.email, Validators.required]],
       'address_one': [null],
       'address_two': [null],

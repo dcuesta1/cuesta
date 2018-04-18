@@ -32,15 +32,15 @@ export class BusinessSettingsComponent implements OnInit {
       this.currentUser = new User(_local.getCurrentUser());
     }
 
-    this._settingsService.get(this.currentUser.id).subscribe((settings: Settings) => {
+    this._settingsService.get(this.currentUser).subscribe((settings: Settings) => {
       this.settings = new Settings(settings);
 
       this.businessInfoForm = this._fb.group({
         'business_name': [this.settings.business_name, [Validators.required]],
         'business_email': [this.settings.business_email, [Validators.email]],
         'business_phone': [this.settings.business_phone, [Validators.required]],
-        'tax': [this._decimalPipe.transform(this.settings.tax, '1.2-2')],
-        'fee': [this._decimalPipe.transform(this.settings.fee, '1.2-2')],
+        'tax': [this._decimalPipe.transform(this.settings.tax, '1.2-2'), [Validators.required]],
+        'fee': [this._decimalPipe.transform(this.settings.fee, '1.2-2'), [Validators.required]]
       });
     });
   }
@@ -85,12 +85,23 @@ export class BusinessSettingsComponent implements OnInit {
     }
   }
 
-  public updateBusinessSettings(input: any) {
+  public updateBusinessSettings(inputs: any) {
+    const updatedSettings = new Settings(inputs);
+    updatedSettings.plan = 0; // TODO: add payed and free subscription interface & handler
 
+    this._settingsService.update(updatedSettings, this.currentUser).subscribe((settings: Settings) => {
+      this.settings = new Settings(settings);
+      this.reset();
+    });
   }
 
-  public reset() {
-
+  private reset() {
+    this.businessInfoForm.reset({
+      business_phone: this.settings.business_phone,
+      business_email: this.settings.business_email,
+      business_name: this.settings.business_name,
+      tax: this._decimalPipe.transform(this.settings.tax, '1.2-2'),
+      fee: this._decimalPipe.transform(this.settings.fee, '1.2-2')
+    });
   }
-
 }

@@ -16,11 +16,13 @@ export class AuthLoginComponent {
   loginForm: FormGroup;
   private _currentUser: User;
 
-  constructor(private router: Router,
-              private fb: FormBuilder,
-              private authService: AuthService,
-              private globalEventsManager: GLobalEventsManager,
-              private local: LocalService) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private globalEventsManager: GLobalEventsManager,
+    private local: LocalService
+  ) {
     this.homeUrl = environment.homeUrl;
     this._currentUser = new User(this.local.getCurrentUser());
 
@@ -43,7 +45,7 @@ export class AuthLoginComponent {
       .subscribe(
         (user: User) => {
           this.globalEventsManager.showNavigations(true);
-          this.local.SetCurrentUser(user);
+          this.local.setCurrentUser(user);
           this._currentUser = new User(user);
 
           if (this._currentUser.isSuperUser()) {
@@ -54,6 +56,4 @@ export class AuthLoginComponent {
         }
       );
   }
-
-  // TODO: register methods
 }

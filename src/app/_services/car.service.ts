@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CarService {
-  constructor(private _api :HttpClient) {}   
+  constructor(private _api: HttpClient) {}
 
   index() {
     return this._api.get('/cars');
@@ -17,7 +17,7 @@ export class CarService {
     return this._api.put('/cars/' + car.id, car);
   }
 
-  destroy(id:number) {
+  destroy(id: number) {
     return this._api.delete<boolean>('/cars/' + id);
   }
 }

@@ -4,7 +4,7 @@
  *  Unprotected Routes
  */
 Route::post('/authenticate', 'AuthController@authenticate');
-
+Route::post('/register', 'AuthController@register');
 
 /*
  *  Protected Routes
@@ -34,8 +34,8 @@ Route::group(['middleware' => ['auth.api']], function () {
      *  SETTINGS
      */
 
-    Route::get('/users/{user}/settings', 'SettingsController@get');
-    Route::put('/users/{user}/settings', 'SettingsController@update');
+    Route::get('/users/{username}/settings', 'SettingsController@get');
+    Route::put('/users/{username}/settings', 'SettingsController@update');
 
     //--Admin
     Route::middleware(['can:admin,App\User'])->group(function () {

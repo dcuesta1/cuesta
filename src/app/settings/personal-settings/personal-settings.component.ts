@@ -67,7 +67,7 @@ export class PersonalSettingsComponent implements OnInit {
     this.currentUser.password = input.password > 0 ? input.name : this.currentUser.password;
 
     this._userService.update(this.currentUser).subscribe(user => {
-      this._local.SetCurrentUser(user);
+      this._local.setCurrentUser(user);
     });
 
     this.reset();
